@@ -1,0 +1,231 @@
+<?php
+/**
+ * TV Universo - Funciones auxiliares
+ * Helpers para consultas, sanitización y utilidades generales
+ */
+
+require_once __DIR__ . '/../config.php';
+
+// =============================================
+// SANITIZACIÓN Y SEGURIDAD
+// =============================================
+
+/** Sanitiza una cadena para prevenir XSS */
+function sanitize(string $input): string {
+    return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
+}
+
+/** Genera un token CSRF y lo almacena en sesión */
+function generateCsrfToken(): string {
+    if (empty($_SESSION[CSRF_TOKEN_NAME])) {
+        $_SESSION[CSRF_TOKEN_NAME] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION[CSRF_TOKEN_NAME];
+}
+
+/** Devuelve un input hidden con el token CSRF */
+function csrfField(): string {
+    return '<input type="hidden" name="' . CSRF_TOKEN_NAME . '" value="' . generateCsrfToken() . '">';
+}
+
+/** Valida el token CSRF del formulario */
+function validateCsrf(): bool {
+    $token = $_POST[CSRF_TOKEN_NAME] ?? '';
+    if (empty($token) || !hash_equals($_SESSION[CSRF_TOKEN_NAME] ?? '', $token)) {
+        return false;
+    }
+    unset($_SESSION[CSRF_TOKEN_NAME]); // Token de un solo uso
+    return true;
+}
+
+// =============================================
+// CONSULTAS A BASE DE DATOS
+// =============================================
+
+/** Obtiene posts con filtros opcionales */
+function getPosts(array $filters = [], int $limit = 20): array {
+    global $pdo;
+    $sql = "SELECT p.*, c.name AS category_name FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE 1=1";
+    $params = [];
+
+    if (!empty($filters['type'])) {
+        $sql .= " AND p.type = :type";
+        $params[':type'] = $filters['type'];
+    }
+    if (!empty($filters['section'])) {
+        $sql .= " AND p.section = :section";
+        $params[':section'] = $filters['section'];
+    }
+    if (!empty($filters['featured'])) {
+        $sql .= " AND p.featured = 1";
+    }
+    if (!empty($filters['category_id'])) {
+        $sql .= " AND p.category_id = :category_id";
+        $params[':category_id'] = $filters['category_id'];
+    }
+
+    $sql .= " ORDER BY p.created_at DESC LIMIT :limit";
+
+    $stmt = $pdo->prepare($sql);
+    foreach ($params as $key => $val) {
+        $stmt->bindValue($key, $val);
+    }
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+/** Obtiene un post por ID */
+function getPostById(int $id): ?array {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT p.*, c.name AS category_name FROM posts p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetch() ?: null;
+}
+
+/** Obtiene videos con filtros opcionales */
+function getVideos(array $filters = [], int $limit = 10): array {
+    global $pdo;
+    $sql = "SELECT v.*, c.name AS category_name FROM videos v LEFT JOIN categories c ON v.category_id = c.id WHERE 1=1";
+    $params = [];
+
+    if (!empty($filters['section'])) {
+        $sql .= " AND v.section = :section";
+        $params[':section'] = $filters['section'];
+    }
+    if (!empty($filters['featured'])) {
+        $sql .= " AND v.featured = 1";
+    }
+
+    $sql .= " ORDER BY v.created_at DESC LIMIT :limit";
+
+    $stmt = $pdo->prepare($sql);
+    foreach ($params as $key => $val) {
+        $stmt->bindValue($key, $val);
+    }
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+/** Obtiene un video por ID */
+function getVideoById(int $id): ?array {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT v.*, c.name AS category_name FROM videos v LEFT JOIN categories c ON v.category_id = c.id WHERE v.id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetch() ?: null;
+}
+
+/** Obtiene todas las categorías */
+function getCategories(string $type = ''): array {
+    global $pdo;
+    if ($type) {
+        $stmt = $pdo->prepare("SELECT * FROM categories WHERE type = :type ORDER BY name");
+        $stmt->execute([':type' => $type]);
+    } else {
+        $stmt = $pdo->query("SELECT * FROM categories ORDER BY type, name");
+    }
+    return $stmt->fetchAll();
+}
+
+/** Obtiene una categoría por ID */
+function getCategoryById(int $id): ?array {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM categories WHERE id = :id");
+    $stmt->execute([':id' => $id]);
+    return $stmt->fetch() ?: null;
+}
+
+/** Obtiene un setting por clave */
+function getSetting(string $key): string {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT setting_value FROM settings WHERE setting_key = :key");
+    $stmt->execute([':key' => $key]);
+    $row = $stmt->fetch();
+    return $row ? ($row['setting_value'] ?? '') : '';
+}
+
+/** Obtiene todos los settings como array asociativo */
+function getAllSettings(): array {
+    global $pdo;
+    $stmt = $pdo->query("SELECT setting_key, setting_value FROM settings");
+    $settings = [];
+    while ($row = $stmt->fetch()) {
+        $settings[$row['setting_key']] = $row['setting_value'];
+    }
+    return $settings;
+}
+
+/** Cuenta registros de una tabla con filtro opcional */
+function countRecords(string $table, array $filters = []): int {
+    global $pdo;
+    $allowed = ['posts', 'videos', 'categories', 'users', 'contacts'];
+    if (!in_array($table, $allowed)) return 0;
+
+    $sql = "SELECT COUNT(*) FROM {$table} WHERE 1=1";
+    $params = [];
+
+    foreach ($filters as $col => $val) {
+        $key = ':' . $col;
+        $sql .= " AND {$col} = {$key}";
+        $params[$key] = $val;
+    }
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    return (int) $stmt->fetchColumn();
+}
+
+/** Incrementa las vistas de un post o video */
+function incrementViews(string $table, int $id): void {
+    global $pdo;
+    $allowed = ['posts', 'videos'];
+    if (!in_array($table, $allowed)) return;
+    $pdo->prepare("UPDATE {$table} SET views = views + 1 WHERE id = :id")->execute([':id' => $id]);
+}
+
+/** Obtiene mensajes de contacto */
+function getContacts(int $limit = 50): array {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT * FROM contacts ORDER BY created_at DESC LIMIT :limit");
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+/** Formatea fecha en español */
+function formatDate(string $date): string {
+    $months = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    $ts = strtotime($date);
+    $day = date('d', $ts);
+    $month = $months[(int)date('m', $ts) - 1];
+    $year = date('Y', $ts);
+    return "{$day} {$month} {$year}";
+}
+
+/** Trunca texto a un número de caracteres */
+function truncateText(string $text, int $length = 150): string {
+    if (mb_strlen($text) <= $length) return $text;
+    return mb_substr($text, 0, $length) . '...';
+}
+
+/** Genera URL amigable */
+function url(string $path = ''): string {
+    return rtrim(BASE_URL, '/') . '/' . ltrim($path, '/');
+}
+
+/** Muestra mensaje flash de sesión */
+function flashMessage(): string {
+    if (!empty($_SESSION['flash'])) {
+        $type = $_SESSION['flash']['type'] ?? 'info';
+        $msg = sanitize($_SESSION['flash']['message'] ?? '');
+        unset($_SESSION['flash']);
+        return "<div class='flash flash--{$type}'>{$msg}</div>";
+    }
+    return '';
+}
+
+/** Establece un mensaje flash */
+function setFlash(string $message, string $type = 'success'): void {
+    $_SESSION['flash'] = ['message' => $message, 'type' => $type];
+}
