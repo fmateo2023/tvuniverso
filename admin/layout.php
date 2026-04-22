@@ -28,8 +28,12 @@ function adminLink(string $file, string $label, string $icon, string $current): 
 </head>
 <body>
 <div class="admin-layout">
+    <!-- Sidebar Toggle -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menú">☰</button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <div class="sidebar__logo">
             📺 TV Universo
             <small>Panel de Administración</small>

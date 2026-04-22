@@ -7,7 +7,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initDeleteConfirm();
     initSectionPreview();
     initImagePreview();
+    initSidebarToggle();
 });
+
+/** Sidebar toggle para móvil */
+function initSidebarToggle() {
+    const toggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebarOverlay');
+    if (!toggle || !sidebar) return;
+
+    function open() {
+        sidebar.classList.add('open');
+        if (overlay) overlay.classList.add('active');
+        toggle.innerHTML = '✕';
+    }
+
+    function close() {
+        sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
+        toggle.innerHTML = '☰';
+    }
+
+    toggle.addEventListener('click', () => {
+        sidebar.classList.contains('open') ? close() : open();
+    });
+
+    if (overlay) overlay.addEventListener('click', close);
+
+    sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', close);
+    });
+}
 
 /** Confirmación antes de eliminar */
 function initDeleteConfirm() {
