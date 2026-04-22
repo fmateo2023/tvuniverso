@@ -24,7 +24,38 @@ function adminLink(string $file, string $label, string $icon, string $current): 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - TV Universo</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/admin.css?v=1.0.3">
+    <style>
+    /* Admin Critical CSS v1.0.3 - inline override */
+    .admin-layout{display:flex!important;min-height:100vh}
+    .sidebar{background:var(--bg-section,#1C1C1C);border-right:1px solid rgba(255,255,255,0.05);padding:1.5rem 0;position:fixed;top:0;left:0;bottom:0;width:260px;overflow-y:auto;z-index:100;transition:transform .3s ease;flex-shrink:0}
+    .admin-main{flex:1;margin-left:260px;padding:2rem 3rem;min-height:100vh;min-width:0;overflow-x:hidden}
+    .admin-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+    .admin-header__title{font-size:1.5rem;font-weight:800;white-space:nowrap}
+    .admin-header__user{white-space:nowrap}
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin-bottom:2rem}
+    .table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
+    .admin-table{width:100%;min-width:700px;border-collapse:collapse}
+    .admin-form__row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .sidebar-toggle{display:none;position:fixed;top:12px;left:12px;z-index:200;background:var(--bg-section,#1C1C1C);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:1.4rem;width:44px;height:44px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center;text-align:center;padding:0;line-height:44px}
+    .sidebar-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:99}
+    .sidebar-overlay.active{display:block}
+    @media(max-width:768px){
+        .sidebar-toggle{display:flex!important}
+        .sidebar{transform:translateX(-100%);z-index:150}
+        .sidebar.open{transform:translateX(0)}
+        .admin-layout{display:block!important}
+        .admin-main{margin-left:0!important;padding:1rem;padding-top:68px}
+        .admin-header{flex-direction:column;align-items:flex-start}
+        .admin-header__title{font-size:1.2rem;white-space:normal}
+        .stats-grid{grid-template-columns:1fr 1fr;gap:.5rem}
+        .admin-form__row{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+        .stats-grid{grid-template-columns:1fr}
+        .admin-main{padding:.5rem;padding-top:64px}
+    }
+    </style>
 </head>
 <body>
 <div class="admin-layout">
@@ -37,7 +68,7 @@ function adminLink(string $file, string $label, string $icon, string $current): 
         <div class="sidebar__logo">
             📺 TV Universo
             <small>Panel de Administración</small>
-            <small style="color:#555;font-size:0.6rem;margin-top:4px;">v1.0.2</small>
+            <small style="color:#555;font-size:0.6rem;margin-top:4px;">v1.0.3</small>
         </div>
 
         <nav class="sidebar__nav">
