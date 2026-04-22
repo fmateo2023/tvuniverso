@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin CSS Diagnostic</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar__logo">
+            📺 Diagnostic
+            <small>CSS Test</small>
+        </div>
+        <nav class="sidebar__nav">
+            <div class="sidebar__section">Test Links</div>
+            <a href="#" class="active">📊 Dashboard</a>
+            <a href="#">📰 Noticias</a>
+            <a href="#">🎥 Videos</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-header">
+            <h1 class="admin-header__title">📰 Gestión de Noticias</h1>
+            <div class="admin-header__user">👤 admin (admin)</div>
+        </div>
+
+        <h3>✅ CSS Diagnostic Results</h3>
+        <div id="results" style="background:#1E1E1E;padding:20px;border-radius:10px;margin:20px 0;font-family:monospace;font-size:14px;line-height:2;"></div>
+
+        <h3 style="margin-top:20px;">📊 Stats Grid Test</h3>
+        <div class="stats-grid" style="margin-top:10px;">
+            <div class="stat-card"><div class="stat-card__icon">📰</div><div class="stat-card__value">10</div><div class="stat-card__label">Noticias</div></div>
+            <div class="stat-card"><div class="stat-card__icon">🎥</div><div class="stat-card__value">5</div><div class="stat-card__label">Videos</div></div>
+            <div class="stat-card"><div class="stat-card__icon">🗂️</div><div class="stat-card__value">10</div><div class="stat-card__label">Categorías</div></div>
+            <div class="stat-card"><div class="stat-card__icon">📩</div><div class="stat-card__value">0</div><div class="stat-card__label">Mensajes</div></div>
+        </div>
+
+        <h3 style="margin-top:20px;">📋 Table Test</h3>
+        <div class="table-wrapper" style="margin-top:10px;">
+            <table class="admin-table">
+                <thead>
+                    <tr><th>ID</th><th>Título</th><th>Tipo</th><th>Sección</th><th>Destacado</th><th>Vistas</th><th>Fecha</th><th>Acciones</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Últimas noticias del día en Canal 48</td>
+                        <td><span class="section-tag section-tag--canal48">📺 Canal 48</span></td>
+                        <td><span class="section-tag section-tag--home">Home</span></td>
+                        <td>⭐</td>
+                        <td>0</td>
+                        <td>21/04/2026</td>
+                        <td class="admin-table__actions">
+                            <a href="#" class="btn-edit">Editar</a>
+                            <a href="#" class="btn-delete">Eliminar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Deportes: Resumen de la jornada</td>
+                        <td><span class="section-tag section-tag--canal48">📺 Canal 48</span></td>
+                        <td><span class="section-tag section-tag--home">Home</span></td>
+                        <td>⭐</td>
+                        <td>0</td>
+                        <td>21/04/2026</td>
+                        <td class="admin-table__actions">
+                            <a href="#" class="btn-edit">Editar</a>
+                            <a href="#" class="btn-delete">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const r = document.getElementById('results');
+    const layout = document.querySelector('.admin-layout');
+    const sidebar = document.querySelector('.sidebar');
+    const main = document.querySelector('.admin-main');
+    const header = document.querySelector('.admin-header');
+
+    const cs = (el) => window.getComputedStyle(el);
+
+    let html = '';
+    html += `<div>🖥️ Window: ${window.innerWidth}x${window.innerHeight}</div>`;
+    html += `<div>📐 .admin-layout display: <b>${cs(layout).display}</b></div>`;
+    html += `<div>📐 .admin-layout grid-template-columns: <b>${cs(layout).gridTemplateColumns}</b></div>`;
+    html += `<div>📐 .admin-layout flex-direction: <b>${cs(layout).flexDirection}</b></div>`;
+    html += `<div>📏 .sidebar width: <b>${cs(sidebar).width}</b> | position: <b>${cs(sidebar).position}</b> | transform: <b>${cs(sidebar).transform}</b></div>`;
+    html += `<div>📏 .admin-main margin-left: <b>${cs(main).marginLeft}</b> | padding: <b>${cs(main).padding}</b> | width: <b>${main.offsetWidth}px</b></div>`;
+    html += `<div>📏 .admin-header display: <b>${cs(header).display}</b> | flex-wrap: <b>${cs(header).flexWrap}</b></div>`;
+    html += `<div>📏 body overflow-x: <b>${cs(document.body).overflowX}</b></div>`;
+
+    // Check if admin.css is loaded
+    let adminCssLoaded = false;
+    for (const sheet of document.styleSheets) {
+        if (sheet.href && sheet.href.includes('admin.css')) {
+            adminCssLoaded = true;
+            html += `<div>✅ admin.css loaded: <b>${sheet.href}</b> (rules: ${sheet.cssRules ? sheet.cssRules.length : 'N/A'})</div>`;
+        }
+        if (sheet.href && sheet.href.includes('styles.css')) {
+            html += `<div>✅ styles.css loaded: <b>${sheet.href}</b> (rules: ${sheet.cssRules ? sheet.cssRules.length : 'N/A'})</div>`;
+        }
+    }
+    if (!adminCssLoaded) {
+        html += `<div style="color:#e74c3c;">❌ admin.css NOT loaded!</div>`;
+    }
+
+    r.innerHTML = html;
+});
+</script>
+</body>
+</html>

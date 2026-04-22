@@ -37,7 +37,7 @@ function adminLink(string $file, string $label, string $icon, string $current): 
         <div class="sidebar__logo">
             📺 TV Universo
             <small>Panel de Administración</small>
-            <small style="color:#555;font-size:0.6rem;margin-top:4px;">v1.0.1</small>
+            <small style="color:#555;font-size:0.6rem;margin-top:4px;">v1.0.2</small>
         </div>
 
         <nav class="sidebar__nav">
