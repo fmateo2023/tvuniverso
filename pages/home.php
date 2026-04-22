@@ -107,8 +107,9 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <section class="section">
     <div class="container">
         <div style="text-align:center;margin-bottom:var(--space-2xl);">
-            <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Televisión</span>
-            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">📺 Canal 48</h2>
+            <img src="assets/images/canal48.jpg" alt="Canal 48" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+            <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;">Televisión</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Canal 48</h2>
             <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin:16px auto 0;border-radius:2px;"></div>
         </div>
         <div class="cards-grid">
@@ -167,8 +168,9 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <section class="section">
     <div class="container">
         <div style="text-align:center;margin-bottom:var(--space-2xl);">
-            <span style="color:var(--cafe);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Revista Digital</span>
-            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">✈️ Top Travel</h2>
+            <img src="assets/images/toptravel.jpg" alt="Top Travel" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+            <span style="color:var(--cafe);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;">Revista Digital</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Top Travel</h2>
             <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--cafe),var(--verde));margin:16px auto 0;border-radius:2px;"></div>
         </div>
         <div class="cards-grid">

@@ -29,7 +29,7 @@ $settings = getAllSettings();
     <meta name="description" content="TV Universo - Canal 48 y Top Travel. Tu ventana al mundo.">
     <title><?= SITE_NAME ?> - <?= ucfirst($page) ?></title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📺</text></svg>">
+    <link rel="icon" type="image/jpeg" href="assets/images/canal48.jpg">
 </head>
 <body>
 
@@ -40,6 +40,8 @@ $settings = getAllSettings();
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
+
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">↑</button>
 
 <script src="assets/js/main.js"></script>
 </body>
