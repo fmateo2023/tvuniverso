@@ -1,5 +1,4 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home1/migue414/public_html/
-    - /bin/cp -Rf /home1/migue414/repositories/tvuniverso/* $DEPLOYPATH
+    - /usr/bin/rsync -a --exclude='.cpanel.yml' --exclude='.git' /home1/migue414/repositories/tvuniverso/ /home1/migue414/public_html/
