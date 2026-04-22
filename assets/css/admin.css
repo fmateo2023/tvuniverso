@@ -114,7 +114,7 @@ body:has(.admin-layout) { overflow-x:auto !important; }
     max-width: 100%;
     overflow-x: hidden;
     background: var(--bg-primary, #FDF6EC);
-    color: var(--text-primary, #1A1A1A);
+    color: #1A1A1A;
 }
 
 .admin-header {
@@ -132,13 +132,14 @@ body:has(.admin-layout) { overflow-x:auto !important; }
     font-size: 1.5rem;
     font-weight: 900;
     font-family: var(--font-heading, 'Playfair Display', serif);
+    color: #1A1A1A;
 }
 
 .admin-header__user {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-secondary, #5A5A5A);
+    color: #5A5A5A;
     font-size: 0.9rem;
 }
 
@@ -160,8 +161,8 @@ body:has(.admin-layout) { overflow-x:auto !important; }
 
 .stat-card:hover { transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,0,0,0.1); }
 .stat-card__icon { font-size:1.5rem; margin-bottom:0.5rem; }
-.stat-card__value { font-size:2rem; font-weight:900; font-family:var(--font-heading, 'Playfair Display', serif); }
-.stat-card__label { font-size:0.85rem; color:var(--text-secondary, #5A5A5A); }
+.stat-card__value { font-size:2rem; font-weight:900; font-family:var(--font-heading, 'Playfair Display', serif); color:#1A1A1A; }
+.stat-card__label { font-size:0.85rem; color:#5A5A5A; }
 
 /* --- Tables --- */
 .table-wrapper {
@@ -190,6 +191,7 @@ body:has(.admin-layout) { overflow-x:auto !important; }
     font-size: 0.9rem;
     border-bottom: 1px solid rgba(0,0,0,0.04);
     vertical-align: middle;
+    color: #1A1A1A;
 }
 
 .admin-table tr:hover td { background:rgba(232,76,138,0.02); }
@@ -255,6 +257,7 @@ body:has(.admin-layout) { overflow-x:auto !important; }
     text-align: center;
     margin-bottom: 0.25rem;
     font-family: var(--font-heading, 'Playfair Display', serif);
+    color: #1A1A1A;
 }
 
 .login-box__subtitle {
@@ -301,7 +304,15 @@ body:has(.admin-layout) { overflow-x:auto !important; }
     padding: 1rem;
     margin-top: 1rem;
     font-size: 0.85rem;
+    color: #1A1A1A;
 }
+
+/* Admin text overrides */
+.admin-main label { color: #1A1A1A; }
+.admin-main h3 { color: #1A1A1A; }
+.admin-main p { color: #5A5A5A; }
+.admin-form { color: #1A1A1A; }
+.admin-form .form-control { color: #1A1A1A; background: #fff; }
 
 /* =============================================
    RESPONSIVE

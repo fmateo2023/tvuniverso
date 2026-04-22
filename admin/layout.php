@@ -29,10 +29,10 @@ function adminLink(string $file, string $label, string $icon, string $current): 
     /* Admin Critical CSS v1.0.3 - inline override */
     .admin-layout{display:flex!important;min-height:100vh}
     .sidebar{background:var(--bg-section,#1C1C1C);border-right:1px solid rgba(255,255,255,0.05);padding:1.5rem 0;position:fixed;top:0;left:0;bottom:0;width:260px;overflow-y:auto;z-index:100;transition:transform .3s ease;flex-shrink:0}
-    .admin-main{flex:1;margin-left:260px;padding:2rem 3rem;min-height:100vh;min-width:0;overflow-x:hidden}
+    .admin-main{flex:1;margin-left:260px;padding:2rem 3rem;min-height:100vh;min-width:0;overflow-x:hidden;color:#1A1A1A}
     .admin-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
-    .admin-header__title{font-size:1.5rem;font-weight:800;white-space:nowrap}
-    .admin-header__user{white-space:nowrap}
+    .admin-header__title{font-size:1.5rem;font-weight:800;white-space:nowrap;color:#1A1A1A}
+    .admin-header__user{white-space:nowrap;color:#5A5A5A}
     .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;margin-bottom:2rem}
     .table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
     .admin-table{width:100%;min-width:700px;border-collapse:collapse}
