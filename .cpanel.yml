@@ -1,4 +1,6 @@
 ---
 deployment:
   tasks:
-    - /usr/bin/rsync -a --exclude='.cpanel.yml' --exclude='.git' /home1/migue414/repositories/tvuniverso/ /home1/migue414/public_html/
+    - /bin/cp -rf /home1/migue414/repositories/tvuniverso/. /home1/migue414/public_html/
+    - find /home1/migue414/public_html/ -type d -exec chmod 755 {} \;
+    - find /home1/migue414/public_html/ -type f -exec chmod 644 {} \;
