@@ -29,7 +29,7 @@ $settings = getAllSettings();
     <meta name="description" content="TV Universo - Canal 48 y Top Travel. Tu ventana al mundo.">
     <title><?= SITE_NAME ?> - <?= ucfirst($page) ?></title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="icon" type="image/jpeg" href="assets/images/canal48.jpg">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 <body>
 

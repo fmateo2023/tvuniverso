@@ -12,7 +12,7 @@ $s = $settings ?? getAllSettings();
             <!-- Marca -->
             <div>
                 <div class="footer__brand" style="display:flex;align-items:center;gap:10px;">
-                    <img src="assets/images/canal48.jpg" alt="Canal 48" style="width:40px;height:40px;border-radius:10px;object-fit:cover;"> TV Universo
+                    <img src="assets/images/favicon.png" alt="TV Universo" style="width:40px;height:40px;border-radius:10px;object-fit:cover;"> TV Universo
                 </div>
                 <p class="footer__desc">Tu ventana al mundo. Noticias, entretenimiento y viajes en un solo lugar. Canal 48 y Top Travel, las marcas que te conectan.</p>
                 <div class="footer__social">

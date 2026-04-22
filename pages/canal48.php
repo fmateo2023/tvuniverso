@@ -16,7 +16,7 @@ $categories = getCategories('noticias');
 <!-- Header -->
 <div class="page-header">
     <div class="container">
-        <img src="assets/images/canal48.jpg" alt="Canal 48" style="width:70px;height:70px;border-radius:var(--radius-lg);object-fit:cover;box-shadow:var(--shadow-card);margin-bottom:var(--space-md);">
+        <img src="assets/images/favicon.png" alt="Canal 48" style="width:70px;height:70px;border-radius:var(--radius-lg);object-fit:cover;box-shadow:var(--shadow-card);margin-bottom:var(--space-md);">
         <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Televisión</span>
         <h1 class="page-header__title" style="margin-top:8px;"><span>Canal 48</span></h1>
         <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin-top:16px;border-radius:2px;"></div>

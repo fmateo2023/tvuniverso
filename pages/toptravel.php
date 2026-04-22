@@ -15,7 +15,7 @@ $categories = getCategories('revista');
 <!-- Header -->
 <div class="page-header">
     <div class="container">
-        <img src="assets/images/toptravel.jpg" alt="Top Travel" style="width:70px;height:70px;border-radius:var(--radius-lg);object-fit:cover;box-shadow:var(--shadow-card);margin-bottom:var(--space-md);">
+        <img src="assets/images/toptravel_negro.jpg" alt="Top Travel" style="width:70px;height:70px;border-radius:var(--radius-lg);object-fit:cover;box-shadow:var(--shadow-card);margin-bottom:var(--space-md);">
         <span style="color:var(--cafe);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Revista Digital</span>
         <h1 class="page-header__title" style="margin-top:8px;"><span>Top Travel</span></h1>
         <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--cafe),var(--verde));margin-top:16px;border-radius:2px;"></div>

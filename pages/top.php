@@ -12,7 +12,7 @@ $topVideos = getVideos(['section' => 'top'], 6);
 <div class="page-header">
     <div class="container">
         <span style="color:var(--verde);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Destacados</span>
-        <h1 class="page-header__title" style="margin-top:8px;">⭐ Lo Más <span>Top</span></h1>
+        <h1 class="page-header__title" style="margin-top:8px;">Lo Más <span>Top</span></h1>
         <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--verde),var(--azul));margin-top:16px;border-radius:2px;"></div>
         <p class="page-header__desc" style="margin-top:12px;">El contenido más visto, los videos virales y lo que todos están hablando.</p>
     </div>

@@ -165,10 +165,10 @@ h1,h2,h3,h4,h5,h6 {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(253,246,236,0.8);
+    background: rgba(26,26,26,0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(107,66,38,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     transition: var(--transition);
 }
 
@@ -186,7 +186,7 @@ h1,h2,h3,h4,h5,h6 {
     font-family: var(--font-heading);
     font-weight: 900;
     font-size: 1.5rem;
-    color: var(--oscuro);
+    color: #fff;
     letter-spacing: 2px;
 }
 
@@ -202,7 +202,7 @@ h1,h2,h3,h4,h5,h6 {
     border-radius: var(--radius-sm);
     font-size: 0.8rem;
     font-weight: 600;
-    color: rgba(26,26,26,0.5);
+    color: rgba(255,255,255,0.6);
     transition: var(--transition);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -220,16 +220,16 @@ h1,h2,h3,h4,h5,h6 {
     transition: transform 0.3s ease;
 }
 
-.navbar__link:hover { color:var(--oscuro); }
+.navbar__link:hover { color:#fff; }
 .navbar__link:hover::after,
 .navbar__link--active::after { transform:scaleX(1); }
-.navbar__link--active { color:var(--oscuro); }
+.navbar__link--active { color:#fff; }
 
 .navbar__toggle {
     display: none;
     background: none;
     border: none;
-    color: var(--oscuro);
+    color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
 }
@@ -293,7 +293,7 @@ h1,h2,h3,h4,h5,h6 {
     font-weight: 900;
     line-height: 1.05;
     margin-bottom: var(--space-md);
-    color: var(--oscuro);
+    color: #FFFFFF;
     font-family: var(--font-heading);
 }
 
@@ -366,6 +366,17 @@ h1,h2,h3,h4,h5,h6 {
 
 .btn--outline:hover {
     background: var(--cafe);
+    color: #fff;
+}
+
+.btn--outline-yellow {
+    background: transparent;
+    color: var(--amarillo);
+    border: 2px solid var(--amarillo);
+}
+
+.btn--outline-yellow:hover {
+    background: var(--amarillo);
     color: #fff;
 }
 
@@ -538,7 +549,7 @@ h1,h2,h3,h4,h5,h6 {
    FOOTER
    ============================================= */
 .footer {
-    background: #3B2415;
+    background: var(--oscuro);
     color: #fff;
     padding: 0;
 }
@@ -881,7 +892,7 @@ select.form-control {
         top: 64px;
         left: 0;
         right: 0;
-        background: rgba(253,246,236,0.97);
+        background: rgba(26,26,26,0.95);
         backdrop-filter: blur(20px);
         flex-direction: column;
         padding: var(--space-lg);

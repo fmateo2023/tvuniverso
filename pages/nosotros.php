@@ -41,12 +41,12 @@
     <div class="container">
         <div class="about-grid">
             <div class="about-card">
-                <img src="assets/images/canal48.jpg" alt="Canal 48" style="width:60px;height:60px;border-radius:var(--radius-md);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+                <img src="assets/images/favicon.png" alt="Canal 48" style="width:60px;height:60px;border-radius:var(--radius-md);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
                 <h3 class="about-card__title">Canal 48</h3>
                 <p class="about-card__text">Nuestro canal de televisión y plataforma digital de noticias. Cobertura 24/7 con información confiable, análisis y entretenimiento.</p>
             </div>
             <div class="about-card">
-                <img src="assets/images/toptravel.jpg" alt="Top Travel" style="width:60px;height:60px;border-radius:var(--radius-md);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+                <img src="assets/images/toptravel_negro.jpg" alt="Top Travel" style="width:60px;height:60px;border-radius:var(--radius-md);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
                 <h3 class="about-card__title">Top Travel</h3>
                 <p class="about-card__text">Revista digital de viajes. Descubre destinos increíbles, hoteles exclusivos y experiencias únicas alrededor del mundo.</p>
             </div>

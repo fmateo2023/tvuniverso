@@ -31,10 +31,10 @@ function initNavbar() {
         const scrollBtn = document.getElementById('scrollTopBtn');
         if (!navbar) return;
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(253,246,236,0.95)';
-            navbar.style.boxShadow = '0 4px 30px rgba(107,66,38,0.08)';
+            navbar.style.background = 'rgba(26,26,26,0.95)';
+            navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.2)';
         } else {
-            navbar.style.background = 'rgba(253,246,236,0.8)';
+            navbar.style.background = 'rgba(26,26,26,0.85)';
             navbar.style.boxShadow = 'none';
         }
         if (scrollBtn) {
