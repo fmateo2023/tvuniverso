@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home1/migue414/public_html/
-    - /bin/cp -R * $DEPLOYPATH
+    - /bin/cp -Rf /home1/migue414/repositories/tvuniverso/* $DEPLOYPATH
