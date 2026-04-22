@@ -21,6 +21,7 @@
     width: 260px;
     overflow-y: auto;
     z-index: 100;
+    transition: transform 0.3s ease;
 }
 
 .sidebar__logo {
@@ -87,17 +88,57 @@
     color: #e74c3c;
 }
 
+/* --- Hamburger Button --- */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 200;
+    background: var(--bg-section);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.sidebar-toggle:hover {
+    background: rgba(47,107,255,0.15);
+}
+
+/* --- Sidebar Overlay --- */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 99;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
 /* --- Main Content --- */
 .admin-main {
     margin-left: 260px;
     padding: var(--space-xl) var(--space-2xl);
     min-height: 100vh;
+    min-width: 0;
 }
 
 .admin-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
     margin-bottom: var(--space-2xl);
     padding-bottom: var(--space-lg);
     border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -119,7 +160,7 @@
 /* --- Dashboard Stats --- */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: var(--space-lg);
     margin-bottom: var(--space-2xl);
 }
@@ -155,6 +196,7 @@
 /* --- Tables --- */
 .table-wrapper {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     background: var(--bg-card);
     border-radius: var(--radius-md);
     border: 1px solid rgba(255,255,255,0.04);
@@ -162,6 +204,7 @@
 
 .admin-table {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
 }
 
@@ -175,6 +218,7 @@
     color: var(--text-muted);
     background: rgba(255,255,255,0.02);
     border-bottom: 1px solid rgba(255,255,255,0.05);
+    white-space: nowrap;
 }
 
 .admin-table td {
@@ -191,6 +235,7 @@
 .admin-table__actions {
     display: flex;
     gap: var(--space-sm);
+    white-space: nowrap;
 }
 
 .admin-table__actions a,
@@ -234,6 +279,7 @@
     border-radius: 12px;
     font-size: 0.7rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .section-tag--home { background: rgba(46,204,113,0.15); color: var(--green); }
@@ -249,6 +295,7 @@
     justify-content: center;
     min-height: 100vh;
     background: var(--bg-primary);
+    padding: var(--space-md);
 }
 
 .login-box {
@@ -313,46 +360,26 @@
     font-size: 0.85rem;
 }
 
-/* --- Hamburger Button --- */
-.sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 200;
-    background: var(--bg-section);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-primary);
-    font-size: 1.4rem;
-    width: 44px;
-    height: 44px;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-}
+/* =============================================
+   RESPONSIVE
+   ============================================= */
 
-.sidebar-toggle:hover {
-    background: rgba(47,107,255,0.15);
-}
-
-/* --- Sidebar Overlay --- */
-.sidebar-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 99;
-}
-
-/* --- Responsive Admin --- */
+/* Tablet landscape */
 @media (max-width: 1024px) {
     .admin-main {
         padding: var(--space-lg);
     }
+
+    .admin-form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card__value {
+        font-size: 1.6rem;
+    }
 }
 
+/* Tablet portrait & mobile */
 @media (max-width: 768px) {
     .sidebar-toggle {
         display: flex;
@@ -360,16 +387,11 @@
 
     .sidebar {
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
         z-index: 150;
     }
 
     .sidebar.open {
         transform: translateX(0);
-    }
-
-    .sidebar-overlay.active {
-        display: block;
     }
 
     .admin-layout {
@@ -385,7 +407,6 @@
     .admin-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--space-sm);
     }
 
     .admin-header__title {
@@ -402,30 +423,21 @@
     }
 
     .stat-card__value {
-        font-size: 1.5rem;
-    }
-
-    .admin-form__row {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-table__actions {
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .admin-table th,
-    .admin-table td {
-        padding: 10px 12px;
-        font-size: 0.8rem;
-        white-space: nowrap;
+        font-size: 1.4rem;
     }
 
     .admin-form {
         padding: var(--space-md);
     }
+
+    .admin-table td,
+    .admin-table th {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
 }
 
+/* Small mobile */
 @media (max-width: 480px) {
     .stats-grid {
         grid-template-columns: 1fr;
@@ -437,7 +449,6 @@
     }
 
     .login-box {
-        margin: var(--space-md);
         padding: var(--space-lg);
     }
 }
