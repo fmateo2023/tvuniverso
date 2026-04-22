@@ -25,7 +25,7 @@ $featuredVideos = getVideos(['featured' => true], 4);
         <h1 class="hero__title fade-up stagger-1">
             TV <span>Universo</span>
         </h1>
-        <p class="hero__desc fade-up stagger-2">Tu ventana al mundo. Donde la información cobra vida.</p>
+        <p class="hero__desc fade-up stagger-2" style="color:#fff;">Tu ventana al mundo. Donde la información cobra vida.</p>
         <div class="hero__actions fade-up stagger-3">
             <a href="index.php?page=canal48" class="btn btn--primary">📺 Canal 48</a>
             <a href="index.php?page=toptravel" class="btn btn--outline-yellow">✈️ Top Travel</a>

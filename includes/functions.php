@@ -229,3 +229,41 @@ function flashMessage(): string {
 function setFlash(string $message, string $type = 'success'): void {
     $_SESSION['flash'] = ['message' => $message, 'type' => $type];
 }
+
+/** Sube una imagen al servidor y devuelve la ruta relativa o false */
+function uploadImage(array $file, string $subfolder = ''): string|false {
+    $allowed = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    $maxSize = 5 * 1024 * 1024; // 5MB
+
+    if ($file['error'] !== UPLOAD_ERR_OK || !in_array($file['type'], $allowed) || $file['size'] > $maxSize) {
+        return false;
+    }
+
+    $uploadDir = __DIR__ . '/../uploads/' . ($subfolder ? trim($subfolder, '/') . '/' : '');
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $filename = uniqid('img_') . '.' . strtolower($ext);
+    $dest = $uploadDir . $filename;
+
+    if (move_uploaded_file($file['tmp_name'], $dest)) {
+        return 'uploads/' . ($subfolder ? trim($subfolder, '/') . '/' : '') . $filename;
+    }
+    return false;
+}
+
+/** Guarda o actualiza un setting */
+function saveSetting(string $key, string $value): void {
+    global $pdo;
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM settings WHERE setting_key = :key");
+    $stmt->execute([':key' => $key]);
+    if ($stmt->fetchColumn() > 0) {
+        $pdo->prepare("UPDATE settings SET setting_value = :val WHERE setting_key = :key")
+            ->execute([':val' => $value, ':key' => $key]);
+    } else {
+        $pdo->prepare("INSERT INTO settings (setting_key, setting_value) VALUES (:key, :val)")
+            ->execute([':key' => $key, ':val' => $value]);
+    }
+}
