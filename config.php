@@ -6,13 +6,13 @@
 
 // --- Configuración de base de datos ---
 define('DB_HOST', 'localhost');
-define('DB_USER', 'root');          // Cambiar en cPanel
-define('DB_PASS', '');              // Cambiar en cPanel
-define('DB_NAME', 'tvuniverso_db');
+define('DB_USER', 'migue414_admin');
+define('DB_PASS', 'Admin#root2026');
+define('DB_NAME', 'migue414_tvuniverso_db');
 define('DB_CHARSET', 'utf8mb4');
 
 // --- URL base del sitio ---
-define('BASE_URL', 'http://localhost/public_html');  // Cambiar en producción
+define('BASE_URL', 'https://televisionuniverso.com');
 define('SITE_NAME', 'TV Universo');
 
 // --- Seguridad ---
