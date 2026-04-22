@@ -1,7 +1,7 @@
 <?php
 /**
  * TV Universo - HOME
- * Hero + Tendencia + Canal 48 + Top Travel
+ * Estilo VOGA: Hero animado + Tendencia + Canal 48 + Top Travel
  */
 
 $heroImage = $settings['hero_image'] ?? 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200';
@@ -17,14 +17,25 @@ $featuredVideos = getVideos(['featured' => true], 4);
     <div class="hero__bg" style="background-image: url('<?= sanitize($heroImage) ?>')"></div>
     <div class="hero__overlay"></div>
     <div class="container hero__content">
-        <span class="hero__tag">📺 EN VIVO</span>
-        <h1 class="hero__title">
-            Bienvenido a <span>TV Universo</span>
+        <div class="fade-up" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <div style="width:40px;height:2px;background:var(--rosa)"></div>
+            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--cafe);font-weight:500;">Noticias · Entretenimiento · Viajes</span>
+            <div style="width:40px;height:2px;background:var(--rosa)"></div>
+        </div>
+        <h1 class="hero__title fade-up stagger-1">
+            TV <span>Universo</span>
         </h1>
-        <p class="hero__desc">Tu ventana al mundo. Noticias, entretenimiento y los mejores destinos de viaje en un solo lugar.</p>
-        <div class="hero__actions">
+        <p class="hero__desc fade-up stagger-2">Tu ventana al mundo. Donde la información cobra vida.</p>
+        <div class="hero__actions fade-up stagger-3">
             <a href="index.php?page=canal48" class="btn btn--primary">📺 Canal 48</a>
             <a href="index.php?page=toptravel" class="btn btn--outline">✈️ Top Travel</a>
+        </div>
+        <div class="color-dots fade-up stagger-4">
+            <span style="background:var(--rosa)"></span>
+            <span style="background:var(--amarillo)"></span>
+            <span style="background:var(--azul)"></span>
+            <span style="background:var(--verde)"></span>
+            <span style="background:var(--cafe)"></span>
         </div>
     </div>
 </section>
@@ -33,7 +44,11 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <?php if (!empty($trendingPosts)): ?>
 <section class="section">
     <div class="container">
-        <h2 class="section__title">Tendencia</h2>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <span style="color:var(--rosa);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Lo último</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">En Tendencia</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--rosa),var(--amarillo));margin:16px auto 0;border-radius:2px;"></div>
+        </div>
         <div class="cards-grid">
             <?php foreach ($trendingPosts as $post): ?>
             <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card">
@@ -61,7 +76,11 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <?php if (!empty($featuredPosts)): ?>
 <section class="section section--dark">
     <div class="container">
-        <h2 class="section__title">Explorar</h2>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Destacados</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Explorar</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--verde));margin:16px auto 0;border-radius:2px;"></div>
+        </div>
         <div class="cards-grid--2">
             <?php foreach ($featuredPosts as $i => $post): ?>
             <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card <?= $i === 0 ? 'card--large' : '' ?>">
@@ -87,7 +106,11 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <?php if (!empty($canal48Posts)): ?>
 <section class="section">
     <div class="container">
-        <h2 class="section__title">📺 Canal 48</h2>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Televisión</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">📺 Canal 48</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin:16px auto 0;border-radius:2px;"></div>
+        </div>
         <div class="cards-grid">
             <?php foreach ($canal48Posts as $post): ?>
             <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card">
@@ -117,7 +140,11 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <?php if (!empty($featuredVideos)): ?>
 <section class="section section--dark">
     <div class="container">
-        <h2 class="section__title">🎥 Videos</h2>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <span style="color:var(--amarillo);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Multimedia</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">🎥 Videos</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--amarillo),var(--rosa));margin:16px auto 0;border-radius:2px;"></div>
+        </div>
         <div class="cards-grid">
             <?php foreach ($featuredVideos as $video): ?>
             <a href="index.php?page=video&id=<?= $video['id'] ?>" class="card card--video">
@@ -139,7 +166,11 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <?php if (!empty($travelPosts)): ?>
 <section class="section">
     <div class="container">
-        <h2 class="section__title">✈️ Top Travel</h2>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <span style="color:var(--cafe);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Revista Digital</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">✈️ Top Travel</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--cafe),var(--verde));margin:16px auto 0;border-radius:2px;"></div>
+        </div>
         <div class="cards-grid">
             <?php foreach ($travelPosts as $post): ?>
             <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card">
@@ -156,7 +187,7 @@ $featuredVideos = getVideos(['featured' => true], 4);
             <?php endforeach; ?>
         </div>
         <div style="text-align:center;margin-top:var(--space-xl);">
-            <a href="index.php?page=toptravel" class="btn btn--pink btn--small">Ver Top Travel</a>
+            <a href="index.php?page=toptravel" class="btn btn--outline btn--small">Ver Top Travel</a>
         </div>
     </div>
 </section>
@@ -165,8 +196,10 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <!-- CONOCE MÁS -->
 <section class="section section--dark">
     <div class="container" style="text-align:center;max-width:700px;">
-        <h2 class="section__title" style="justify-content:center;">Conoce más</h2>
-        <p style="color:var(--text-secondary);margin-bottom:var(--space-xl);font-size:1.05rem;">
+        <span style="color:var(--verde);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Descubre</span>
+        <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;margin-bottom:var(--space-md);">Conoce más</h2>
+        <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--verde),var(--azul));margin:0 auto 24px;border-radius:2px;"></div>
+        <p style="color:var(--text-secondary);margin-bottom:var(--space-xl);font-size:1.05rem;font-family:var(--font-heading);font-style:italic;">
             TV Universo integra lo mejor del periodismo, el entretenimiento y los viajes. Dos marcas, una sola plataforma.
         </p>
         <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;">

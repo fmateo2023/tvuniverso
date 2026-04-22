@@ -1,16 +1,17 @@
 <?php
 /**
  * TV Universo - Footer
- * Pie de página con navegación, redes y copyright
+ * Estilo premium VOGA con gradient bar y color dots
  */
 $s = $settings ?? getAllSettings();
 ?>
 <footer class="footer">
-    <div class="container">
+    <div class="gradient-bar-footer"></div>
+    <div class="container footer__inner">
         <div class="footer__grid">
             <!-- Marca -->
             <div>
-                <div class="footer__brand">📺 TV Universo</div>
+                <div class="footer__brand">TV Universo</div>
                 <p class="footer__desc">Tu ventana al mundo. Noticias, entretenimiento y viajes en un solo lugar. Canal 48 y Top Travel, las marcas que te conectan.</p>
                 <div class="footer__social">
                     <a href="<?= sanitize($s['facebook'] ?? '#') ?>" target="_blank" rel="noopener" title="Facebook">📘</a>
@@ -26,7 +27,7 @@ $s = $settings ?? getAllSettings();
                 <div class="footer__links">
                     <a href="index.php">Inicio</a>
                     <a href="index.php?page=canal48">Canal 48</a>
-                    <a href="index.php?page=top">Lo Más Top</a>
+                    <a href="index.php?page=top">Lo +Top</a>
                     <a href="index.php?page=toptravel">Top Travel</a>
                 </div>
             </div>
@@ -47,13 +48,20 @@ $s = $settings ?? getAllSettings();
                 <div class="footer__links">
                     <a href="mailto:<?= sanitize($s['contact_email'] ?? '') ?>"><?= sanitize($s['contact_email'] ?? '') ?></a>
                     <a href="tel:<?= sanitize($s['contact_phone'] ?? '') ?>"><?= sanitize($s['contact_phone'] ?? '') ?></a>
-                    <span style="color:var(--text-secondary);font-size:0.9rem;"><?= sanitize($s['contact_address'] ?? '') ?></span>
+                    <span style="color:rgba(255,255,255,0.5);font-size:0.9rem;"><?= sanitize($s['contact_address'] ?? '') ?></span>
                 </div>
             </div>
         </div>
 
         <div class="footer__bottom">
             <span>&copy; <?= date('Y') ?> TV Universo. Todos los derechos reservados.</span>
+            <div class="color-dots">
+                <span style="background:var(--rosa)"></span>
+                <span style="background:var(--amarillo)"></span>
+                <span style="background:var(--azul)"></span>
+                <span style="background:var(--verde)"></span>
+                <span style="background:var(--cafe)"></span>
+            </div>
             <span>Canal 48 &bull; Top Travel</span>
         </div>
     </div>

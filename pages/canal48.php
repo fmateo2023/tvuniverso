@@ -16,8 +16,10 @@ $categories = getCategories('noticias');
 <!-- Header -->
 <div class="page-header">
     <div class="container">
-        <h1 class="page-header__title">📺 <span>Canal 48</span></h1>
-        <p class="page-header__desc">Noticias, videos y contenido en vivo. Tu fuente de información confiable.</p>
+        <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Televisión</span>
+        <h1 class="page-header__title" style="margin-top:8px;">📺 <span>Canal 48</span></h1>
+        <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin-top:16px;border-radius:2px;"></div>
+        <p class="page-header__desc" style="margin-top:12px;">Noticias, videos y contenido en vivo. Tu fuente de información confiable.</p>
     </div>
 </div>
 
