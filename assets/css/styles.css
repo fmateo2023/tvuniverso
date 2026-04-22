@@ -244,14 +244,15 @@ h1,h2,h3,h4,h5,h6 {
     align-items: center;
     overflow: hidden;
     margin-top: 68px;
+    background: #0B1120;
 }
 
 .hero__bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    filter: brightness(0.3);
+    background-repeat: no-repeat;
 }
 
 .hero__overlay {

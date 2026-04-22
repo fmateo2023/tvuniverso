@@ -28,7 +28,7 @@ function adminLink(string $file, string $label, string $icon, string $current): 
     <style>
     /* Admin Critical CSS v1.0.3 - inline override */
     .admin-layout{display:flex!important;min-height:100vh}
-    .sidebar{background:var(--bg-section,#1C1C1C);border-right:1px solid rgba(255,255,255,0.05);padding:1.5rem 0;position:fixed;top:0;left:0;bottom:0;width:260px;overflow-y:auto;z-index:100;transition:transform .3s ease;flex-shrink:0}
+    .sidebar{background:#1A1A1A;border-right:1px solid rgba(255,255,255,0.05);padding:1.5rem 0;position:fixed;top:0;left:0;bottom:0;width:260px;overflow-y:auto;z-index:100;transition:transform .3s ease;flex-shrink:0;color:#fff}
     .admin-main{flex:1;margin-left:260px;padding:2rem 3rem;min-height:100vh;min-width:0;overflow-x:hidden;color:#1A1A1A}
     .admin-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,0.05)}
     .admin-header__title{font-size:1.5rem;font-weight:800;white-space:nowrap;color:#1A1A1A}
@@ -37,7 +37,7 @@ function adminLink(string $file, string $label, string $icon, string $current): 
     .table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;width:100%}
     .admin-table{width:100%;min-width:700px;border-collapse:collapse}
     .admin-form__row{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-    .sidebar-toggle{display:none;position:fixed;top:12px;left:12px;z-index:200;background:var(--bg-section,#1C1C1C);border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:1.4rem;width:44px;height:44px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center;text-align:center;padding:0;line-height:44px}
+    .sidebar-toggle{display:none;position:fixed;top:12px;left:12px;z-index:200;background:#1A1A1A;border:1px solid rgba(255,255,255,0.1);color:#fff;font-size:1.4rem;width:44px;height:44px;border-radius:6px;cursor:pointer;align-items:center;justify-content:center;text-align:center;padding:0;line-height:44px}
     .sidebar-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:99}
     .sidebar-overlay.active{display:block}
     @media(max-width:768px){
