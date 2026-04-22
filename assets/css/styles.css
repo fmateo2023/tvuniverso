@@ -752,6 +752,14 @@ select.form-control {
     min-width: 0;
 }
 
+.contact-info-card h3 {
+    color: #fff !important;
+}
+
+.contact-info-card p {
+    color: rgba(255,255,255,0.5) !important;
+}
+
 .contact-info-card__deco--top {
     position: absolute;
     top: 0; right: 0;
@@ -801,6 +809,7 @@ select.form-control {
     color: #fff !important;
     word-break: break-word;
     overflow-wrap: break-word;
+    font-size: 0.95rem;
 }
 
 .contact-info-label {
@@ -841,6 +850,14 @@ select.form-control {
     padding: 2.5rem;
     box-shadow: var(--shadow-card);
     min-width: 0;
+}
+
+.contact-form-card h3 {
+    color: var(--oscuro) !important;
+}
+
+.contact-form-card p {
+    color: var(--text-muted) !important;
 }
 
 .contact-form-row {
