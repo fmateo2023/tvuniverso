@@ -19,7 +19,7 @@ $featuredVideos = getVideos(['featured' => true], 4);
     <div class="container hero__content">
         <div class="fade-up" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
             <div style="width:40px;height:2px;background:var(--rosa)"></div>
-            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--cafe);font-weight:500;">Noticias · Entretenimiento · Viajes</span>
+            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF;font-weight:500;">Noticias · Entretenimiento · Viajes</span>
             <div style="width:40px;height:2px;background:var(--rosa)"></div>
         </div>
         <h1 class="hero__title fade-up stagger-1">
@@ -27,8 +27,8 @@ $featuredVideos = getVideos(['featured' => true], 4);
         </h1>
         <p class="hero__desc fade-up stagger-2" style="color:#fff;">Tu ventana al mundo. Donde la información cobra vida.</p>
         <div class="hero__actions fade-up stagger-3">
-            <a href="index.php?page=canal48" class="btn btn--primary">📺 Canal 48</a>
-            <a href="index.php?page=toptravel" class="btn btn--outline-yellow">✈️ Top Travel</a>
+            <a href="index.php?page=canal48" class="btn btn--primary">Canal 48</a>
+            <a href="index.php?page=toptravel" class="btn btn--outline-yellow">Top Travel</a>
         </div>
         <div class="color-dots fade-up stagger-4">
             <span style="background:var(--rosa)"></span>
