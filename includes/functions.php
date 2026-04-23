@@ -254,6 +254,62 @@ function uploadImage(array $file, string $subfolder = ''): string|false {
     return false;
 }
 
+/** Sube una imagen, la redimensiona y comprime para optimizar peso sin perder calidad visible */
+function uploadAndOptimizeImage(array $file, string $subfolder = '', int $maxWidth = 1200, int $quality = 82): string|false {
+    $allowed = ['image/jpeg', 'image/png', 'image/webp'];
+    $maxSize = 10 * 1024 * 1024; // 10MB original permitido
+
+    if ($file['error'] !== UPLOAD_ERR_OK || !in_array($file['type'], $allowed) || $file['size'] > $maxSize) {
+        return false;
+    }
+
+    $uploadDir = __DIR__ . '/../uploads/' . ($subfolder ? trim($subfolder, '/') . '/' : '');
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+
+    // Crear imagen desde el archivo original
+    $srcImage = match ($file['type']) {
+        'image/jpeg' => imagecreatefromjpeg($file['tmp_name']),
+        'image/png'  => imagecreatefrompng($file['tmp_name']),
+        'image/webp' => imagecreatefromwebp($file['tmp_name']),
+        default      => false,
+    };
+    if (!$srcImage) return false;
+
+    $origW = imagesx($srcImage);
+    $origH = imagesy($srcImage);
+
+    // Redimensionar solo si excede el ancho máximo
+    if ($origW > $maxWidth) {
+        $newW = $maxWidth;
+        $newH = (int) round($origH * ($maxWidth / $origW));
+        $resized = imagecreatetruecolor($newW, $newH);
+
+        // Preservar transparencia en PNG/WebP
+        if ($file['type'] !== 'image/jpeg') {
+            imagealphablending($resized, false);
+            imagesavealpha($resized, true);
+        }
+
+        imagecopyresampled($resized, $srcImage, 0, 0, 0, 0, $newW, $newH, $origW, $origH);
+        imagedestroy($srcImage);
+        $srcImage = $resized;
+    }
+
+    // Guardar siempre como WebP para máxima compresión
+    $filename = uniqid('img_') . '.webp';
+    $dest = $uploadDir . $filename;
+
+    $success = imagewebp($srcImage, $dest, $quality);
+    imagedestroy($srcImage);
+
+    if ($success) {
+        return 'uploads/' . ($subfolder ? trim($subfolder, '/') . '/' : '') . $filename;
+    }
+    return false;
+}
+
 /** Guarda o actualiza un setting */
 function saveSetting(string $key, string $value): void {
     global $pdo;

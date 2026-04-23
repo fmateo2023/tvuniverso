@@ -24,11 +24,20 @@ if ($action === 'delete' && $id) {
 
 // --- GUARDAR (crear/editar) ---
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && validateCsrf()) {
+    // Determinar imagen: prioridad archivo subido > URL manual
+    $imageUrl = sanitize($_POST['image_url'] ?? '');
+    if (!empty($_FILES['image_file']) && $_FILES['image_file']['error'] === UPLOAD_ERR_OK) {
+        $uploaded = uploadAndOptimizeImage($_FILES['image_file'], 'posts', 1200, 82);
+        if ($uploaded) {
+            $imageUrl = $uploaded;
+        }
+    }
+
     $data = [
         ':title'       => sanitize($_POST['title'] ?? ''),
         ':content'     => sanitize($_POST['content'] ?? ''),
         ':excerpt'     => sanitize($_POST['excerpt'] ?? ''),
-        ':image_url'   => sanitize($_POST['image_url'] ?? ''),
+        ':image_url'   => $imageUrl,
         ':category_id' => (int)($_POST['category_id'] ?? 0) ?: null,
         ':type'        => in_array($_POST['type'] ?? '', ['canal48', 'toptravel']) ? $_POST['type'] : 'canal48',
         ':section'     => sanitize($_POST['section'] ?? 'home'),
@@ -57,7 +66,7 @@ if ($action === 'create' || ($action === 'edit' && $id)):
 </div>
 
 <div class="admin-form">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         <?= csrfField() ?>
 
         <div class="admin-form__row">
@@ -77,10 +86,23 @@ if ($action === 'create' || ($action === 'edit' && $id)):
         </div>
 
         <div class="form-group">
-            <label>URL de imagen</label>
-            <input type="url" name="image_url" class="form-control" value="<?= sanitize($post['image_url'] ?? '') ?>" placeholder="https://...">
-            <span class="admin-form__hint">Pega la URL de una imagen o sube a /uploads</span>
+            <label>Imagen (subir archivo)</label>
+            <input type="file" name="image_file" class="form-control" accept="image/jpeg,image/png,image/webp">
+            <span class="admin-form__hint">JPG, PNG o WebP · Máx 10MB · Se optimiza automáticamente a WebP</span>
         </div>
+
+        <div class="form-group">
+            <label>O pegar URL de imagen</label>
+            <input type="url" name="image_url" class="form-control" value="<?= sanitize($post['image_url'] ?? '') ?>" placeholder="https://...">
+            <span class="admin-form__hint">Si subes un archivo, este campo se ignora</span>
+        </div>
+
+        <?php if (!empty($post['image_url'])): ?>
+        <div class="form-group">
+            <label>Imagen actual</label>
+            <img src="<?= sanitize($post['image_url']) ?>" alt="Preview" style="max-width:300px;border-radius:var(--radius-md);">
+        </div>
+        <?php endif; ?>
 
         <div class="admin-form__row">
             <div class="form-group">
