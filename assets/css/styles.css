@@ -1020,6 +1020,7 @@ select.form-control {
     .navbar__menu.active { display:flex; }
     .navbar__toggle { display:block; }
     .hero { min-height:70vh; }
+    .hero__bg { display:none; }
     .hero__title { font-size:2.2rem; }
     .cards-grid, .cards-grid--2 { grid-template-columns:1fr; }
     .footer__grid { grid-template-columns:1fr; }
