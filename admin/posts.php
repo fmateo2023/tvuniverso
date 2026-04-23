@@ -86,23 +86,47 @@ if ($action === 'create' || ($action === 'edit' && $id)):
         </div>
 
         <div class="form-group">
-            <label>Imagen (subir archivo)</label>
-            <input type="file" name="image_file" class="form-control" accept="image/jpeg,image/png,image/webp">
-            <span class="admin-form__hint">JPG, PNG o WebP · Máx 10MB · Se optimiza automáticamente a WebP</span>
+            <label>Imagen</label>
+            <div class="image-switch">
+                <span class="image-switch__label" data-for="url">🔗 URL</span>
+                <label class="switch">
+                    <input type="checkbox" id="imageToggle">
+                    <span class="switch__slider"></span>
+                </label>
+                <span class="image-switch__label" data-for="file">📁 Subir</span>
+            </div>
+            <div id="imageUrlField">
+                <input type="url" name="image_url" class="form-control" value="<?= sanitize($post['image_url'] ?? '') ?>" placeholder="https://...">
+            </div>
+            <div id="imageFileField" style="display:none;">
+                <label class="file-upload">
+                    <input type="file" name="image_file" accept="image/jpeg,image/png,image/webp">
+                    <span class="file-upload__btn">Seleccionar imagen</span>
+                    <span class="file-upload__name">Sin archivo seleccionado</span>
+                </label>
+                <span class="admin-form__hint">JPG, PNG o WebP · Máx 10MB · Se optimiza a WebP</span>
+            </div>
+            <?php if (!empty($post['image_url'])): ?>
+            <img src="<?= sanitize($post['image_url']) ?>" alt="Preview" style="max-width:200px;border-radius:8px;margin-top:10px;">
+            <?php endif; ?>
         </div>
 
-        <div class="form-group">
-            <label>O pegar URL de imagen</label>
-            <input type="url" name="image_url" class="form-control" value="<?= sanitize($post['image_url'] ?? '') ?>" placeholder="https://...">
-            <span class="admin-form__hint">Si subes un archivo, este campo se ignora</span>
-        </div>
-
-        <?php if (!empty($post['image_url'])): ?>
-        <div class="form-group">
-            <label>Imagen actual</label>
-            <img src="<?= sanitize($post['image_url']) ?>" alt="Preview" style="max-width:300px;border-radius:var(--radius-md);">
-        </div>
-        <?php endif; ?>
+        <script>
+        (function(){
+            const toggle = document.getElementById('imageToggle');
+            const urlF = document.getElementById('imageUrlField');
+            const fileF = document.getElementById('imageFileField');
+            const fileName = fileF.querySelector('.file-upload__name');
+            const fileInput = fileF.querySelector('input[type=file]');
+            toggle.addEventListener('change', function(){
+                if(this.checked){ urlF.style.display='none'; fileF.style.display=''; }
+                else { urlF.style.display=''; fileF.style.display='none'; }
+            });
+            fileInput.addEventListener('change', function(){
+                fileName.textContent = this.files[0] ? this.files[0].name : 'Sin archivo seleccionado';
+            });
+        })();
+        </script>
 
         <div class="admin-form__row">
             <div class="form-group">

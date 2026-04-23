@@ -299,6 +299,93 @@ body:has(.admin-layout) { overflow-x:auto !important; }
     margin-top: 4px;
 }
 
+/* --- Image Switch Toggle --- */
+.image-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.image-switch__label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted, #8A8A8A);
+    cursor: default;
+}
+
+.switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.switch input { opacity:0; width:0; height:0; }
+
+.switch__slider {
+    position: absolute;
+    inset: 0;
+    background: var(--azul, #2A7FBF);
+    border-radius: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.switch__slider::before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.switch input:checked + .switch__slider { background: var(--rosa, #E84C8A); }
+.switch input:checked + .switch__slider::before { transform: translateX(20px); }
+
+/* --- File Upload Button --- */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.file-upload input[type=file] { display:none; }
+
+.file-upload__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, var(--rosa, #E84C8A), #c13d73);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.file-upload__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232,76,138,0.35);
+}
+
+.file-upload__name {
+    font-size: 0.85rem;
+    color: var(--text-muted, #8A8A8A);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
 .admin-form__section-preview {
     background: rgba(232,76,138,0.06);
     border: 1px solid rgba(232,76,138,0.15);
