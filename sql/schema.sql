@@ -56,8 +56,8 @@ CREATE TABLE IF NOT EXISTS posts (
 CREATE TABLE IF NOT EXISTS videos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    url VARCHAR(500) NOT NULL,
-    thumbnail VARCHAR(500) DEFAULT NULL,
+    url TEXT NOT NULL,
+    thumbnail TEXT DEFAULT NULL,
     category_id INT DEFAULT NULL,
     section VARCHAR(50) DEFAULT 'canal48',
     featured TINYINT(1) DEFAULT 0,

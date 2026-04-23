@@ -26,8 +26,8 @@ if ($action === 'delete' && $id) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && validateCsrf()) {
     $data = [
         ':title'       => sanitize($_POST['title'] ?? ''),
-        ':url'         => sanitize($_POST['url'] ?? ''),
-        ':thumbnail'   => sanitize($_POST['thumbnail'] ?? ''),
+        ':url'         => filter_var(trim($_POST['url'] ?? ''), FILTER_SANITIZE_URL),
+        ':thumbnail'   => filter_var(trim($_POST['thumbnail'] ?? ''), FILTER_SANITIZE_URL),
         ':category_id' => (int)($_POST['category_id'] ?? 0) ?: null,
         ':section'     => sanitize($_POST['section'] ?? 'canal48'),
         ':featured'    => isset($_POST['featured']) ? 1 : 0,
@@ -65,13 +65,13 @@ if ($action === 'create' || ($action === 'edit' && $id)):
 
         <div class="form-group">
             <label>URL del video (embed)</label>
-            <input type="url" name="url" class="form-control" value="<?= sanitize($video['url'] ?? '') ?>" placeholder="https://www.youtube.com/embed/..." required>
+            <input type="url" name="url" class="form-control" value="<?= htmlspecialchars($video['url'] ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="https://www.youtube.com/embed/..." required>
             <span class="admin-form__hint">Usa la URL de embed de YouTube o Facebook</span>
         </div>
 
         <div class="form-group">
             <label>URL de thumbnail</label>
-            <input type="url" name="thumbnail" class="form-control" value="<?= sanitize($video['thumbnail'] ?? '') ?>" placeholder="https://...">
+            <input type="url" name="thumbnail" class="form-control" value="<?= htmlspecialchars($video['thumbnail'] ?? '', ENT_QUOTES, 'UTF-8') ?>" placeholder="https://...">
         </div>
 
         <div class="admin-form__row">
