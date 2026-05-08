@@ -94,7 +94,7 @@ switch ($page) {
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
-<body class="<?= in_array($page, ['canal48', 'top', 'toptravel', 'post', 'video']) ? 'has-subheader' : '' ?>">
+<body>
 
 <?php include __DIR__ . '/includes/navbar.php'; ?>
 
