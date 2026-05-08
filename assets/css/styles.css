@@ -157,81 +157,136 @@ h1,h2,h3,h4,h5,h6 {
 .flash--info { background:rgba(42,127,191,0.12); color:var(--azul); border-left:4px solid var(--azul); }
 
 /* =============================================
-   NAVBAR - Glass Effect
+   HEADER PRINCIPAL - Estilo TV Network
    ============================================= */
-.navbar {
+.header-main {
     position: fixed;
     top: 4px;
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(26,26,26,0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    background: #1B2838;
     transition: var(--transition);
 }
 
-.navbar__inner {
+.header-main__inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 64px;
+    height: 58px;
+    gap: var(--space-2xl);
 }
 
-.navbar__logo {
+.header-main__logo {
     display: flex;
     align-items: center;
-    gap: var(--space-sm);
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 1.5rem;
-    color: #fff;
-    letter-spacing: 2px;
+    flex-shrink: 0;
 }
 
-.navbar__menu {
+.header-main__logo img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-main__nav {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
+    gap: var(--space-xl);
 }
 
-.navbar__link {
-    position: relative;
-    padding: 8px 16px;
-    border-radius: var(--radius-sm);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: rgba(255,255,255,0.6);
-    transition: var(--transition);
+.header-main__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.85);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
+    transition: var(--transition);
+    white-space: nowrap;
 }
 
-.navbar__link::after {
-    content: '';
-    position: absolute;
-    bottom: 2px;
-    left: 16px;
-    right: 16px;
-    height: 2px;
-    background: var(--amarillo);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+.header-main__link:hover {
+    color: #fff;
 }
 
-.navbar__link:hover { color:#fff; }
-.navbar__link:hover::after,
-.navbar__link--active::after { transform:scaleX(1); }
-.navbar__link--active { color:#fff; }
+.header-main__link--active {
+    color: #fff;
+}
 
-.navbar__toggle {
+.header-main__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rosa);
+    flex-shrink: 0;
+}
+
+.header-main__toggle {
     display: none;
     background: none;
     border: none;
     color: #fff;
     font-size: 1.5rem;
     cursor: pointer;
+    margin-left: auto;
+}
+
+/* =============================================
+   SUBHEADER DINÁMICO
+   ============================================= */
+.subheader {
+    position: fixed;
+    top: 62px; /* header-main height + gradient-bar */
+    left: 0;
+    right: 0;
+    z-index: 999;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.subheader--canal48 {
+    background: #15202D;
+}
+
+.subheader--toptravel {
+    background: #1E1A15;
+}
+
+.subheader__inner {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    gap: var(--space-lg);
+}
+
+.subheader__link {
+    position: relative;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 10px 0;
+    transition: var(--transition);
+}
+
+.subheader__link:hover {
+    color: rgba(255,255,255,0.9);
+}
+
+.subheader__link--active {
+    color: #fff;
+}
+
+.subheader__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--rosa);
 }
 
 /* =============================================
@@ -243,8 +298,15 @@ h1,h2,h3,h4,h5,h6 {
     display: flex;
     align-items: center;
     overflow: hidden;
-    margin-top: 68px;
+    margin-top: 62px;
     background: #1C1C1E;
+}
+
+/* Cuando hay subheader, agregar espacio extra */
+.has-subheader .hero,
+.has-subheader .page-header,
+.has-subheader .about-hero {
+    margin-top: 104px;
 }
 
 .hero__bg {
@@ -886,7 +948,7 @@ select.form-control {
 .about-hero {
     text-align: center;
     padding: var(--space-3xl) 0;
-    margin-top: 68px;
+    margin-top: 62px;
 }
 
 .about-hero__title {
@@ -931,7 +993,7 @@ select.form-control {
    ============================================= */
 .page-header {
     padding: var(--space-3xl) 0 var(--space-xl);
-    margin-top: 68px;
+    margin-top: 62px;
     background: var(--bg-section);
     position: relative;
     overflow: hidden;
@@ -1006,19 +1068,25 @@ select.form-control {
 }
 
 @media (max-width: 768px) {
-    .navbar__menu {
+    .header-main__nav {
         display: none;
         position: absolute;
-        top: 64px;
+        top: 58px;
         left: 0;
         right: 0;
-        background: rgba(26,26,26,0.95);
-        backdrop-filter: blur(20px);
+        background: #1B2838;
         flex-direction: column;
         padding: var(--space-lg);
+        gap: var(--space-md);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .navbar__menu.active { display:flex; }
-    .navbar__toggle { display:block; }
+    .header-main__nav.active { display:flex; }
+    .header-main__toggle { display:block; }
+
+    .subheader { top: 62px; }
+    .subheader__inner { gap: var(--space-md); }
+    .subheader__link { font-size: 0.72rem; }
+
     .hero { min-height:70vh; }
     .hero__bg { display:none; }
     .hero__title { font-size:2.2rem; }

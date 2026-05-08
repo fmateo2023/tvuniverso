@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initNavbar() {
-    const toggle = document.querySelector('.navbar__toggle');
-    const menu = document.querySelector('.navbar__menu');
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.querySelector('.header-main__nav');
 
     if (toggle && menu) {
         toggle.addEventListener('click', () => {
@@ -18,7 +18,7 @@ function initNavbar() {
             toggle.textContent = menu.classList.contains('active') ? '✕' : '☰';
         });
 
-        menu.querySelectorAll('.navbar__link').forEach(link => {
+        menu.querySelectorAll('.header-main__link').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.remove('active');
                 toggle.textContent = '☰';
@@ -27,15 +27,14 @@ function initNavbar() {
     }
 
     window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
+        const header = document.querySelector('.header-main');
         const scrollBtn = document.getElementById('scrollTopBtn');
-        if (!navbar) return;
-        if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(26,26,26,0.95)';
-            navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.2)';
-        } else {
-            navbar.style.background = 'rgba(26,26,26,0.85)';
-            navbar.style.boxShadow = 'none';
+        if (header) {
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.3)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
         }
         if (scrollBtn) {
             scrollBtn.classList.toggle('visible', window.scrollY > 400);
