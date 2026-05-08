@@ -4,7 +4,7 @@
  * Estilo VOGA: Hero animado + Tendencia + Canal 48 + Top Travel
  */
 
-$heroImage = $settings['hero_image'] ?? 'assets/images/hero_canal48.png';
+$heroImage = $settings['hero_image'] ?? 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1200';
 $featuredPosts = getPosts(['featured' => true, 'section' => 'home'], 4);
 $trendingPosts = getPosts(['section' => 'tendencia'], 4);
 $canal48Posts = getPosts(['type' => 'canal48'], 4);
@@ -19,16 +19,16 @@ $featuredVideos = getVideos(['featured' => true], 4);
     <div class="container hero__content">
         <div class="fade-up" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
             <div style="width:40px;height:2px;background:var(--rosa)"></div>
-            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF;font-weight:500;">Noticias · Entretenimiento · Viajes</span>
+            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);font-weight:500;">Noticias · Entretenimiento · Viajes</span>
             <div style="width:40px;height:2px;background:var(--rosa)"></div>
         </div>
         <h1 class="hero__title fade-up stagger-1">
             TV <span>Universo</span>
         </h1>
-        <p class="hero__desc fade-up stagger-2" style="color:#fff;">Tu ventana al mundo. Donde la información cobra vida.</p>
+        <p class="hero__desc fade-up stagger-2">Conectados Contigo</p>
         <div class="hero__actions fade-up stagger-3">
-            <a href="index.php?page=canal48" class="btn btn--primary">Canal 48</a>
-            <a href="index.php?page=toptravel" class="btn btn--outline-yellow">Top Travel</a>
+            <a href="index.php?page=canal48" class="btn btn--primary"> Canal 48</a>
+            <a href="index.php?page=toptravel" class="btn btn--outline"> Top Travel</a>
         </div>
         <div class="color-dots fade-up stagger-4">
             <span style="background:var(--rosa)"></span>
@@ -107,7 +107,7 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <section class="section">
     <div class="container">
         <div style="text-align:center;margin-bottom:var(--space-2xl);">
-            <img src="assets/images/canal48_logo.png" alt="Canal 48" style="height:60px;width:auto;object-fit:contain;margin:0 auto var(--space-md);">
+            <img src="assets/images/canal48.jpg" alt="Canal 48" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
             <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;">Televisión</span>
             <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Canal 48</h2>
             <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin:16px auto 0;border-radius:2px;"></div>
@@ -168,7 +168,7 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <section class="section">
     <div class="container">
         <div style="text-align:center;margin-bottom:var(--space-2xl);">
-            <img src="assets/images/toptravel_negro.jpg" alt="Top Travel" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+            <img src="assets/images/toptravel.jpg" alt="Top Travel" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
             <span style="color:var(--cafe);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;">Revista Digital</span>
             <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Top Travel</h2>
             <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--cafe),var(--verde));margin:16px auto 0;border-radius:2px;"></div>
