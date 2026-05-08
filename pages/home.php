@@ -19,13 +19,13 @@ $featuredVideos = getVideos(['featured' => true], 4);
     <div class="container hero__content">
         <div class="fade-up" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
             <div style="width:40px;height:2px;background:var(--rosa)"></div>
-            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:var(--white);font-weight:500;">Noticias · Entretenimiento · Viajes</span>
+            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF;font-weight:500;">Noticias · Entretenimiento · Viajes</span>
             <div style="width:40px;height:2px;background:var(--rosa)"></div>
         </div>
         <h1 class="hero__title fade-up stagger-1">
             TV <span>Universo</span>
         </h1>
-        <p class="hero__desc fade-up stagger-2">Conectados Contigo</p>
+        <p class="hero__desc fade-up stagger-2" style="color:#FFFFFF;">Conectados Contigo</p>
         <div class="hero__actions fade-up stagger-3">
             <a href="index.php?page=canal48" class="btn btn--primary"> Canal 48</a>
             <a href="index.php?page=toptravel" class="btn btn--outline"> Top Travel</a>
