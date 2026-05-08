@@ -107,7 +107,7 @@ $featuredVideos = getVideos(['featured' => true], 4);
 <section class="section">
     <div class="container">
         <div style="text-align:center;margin-bottom:var(--space-2xl);">
-            <img src="assets/images/favicon.png" alt="Canal 48" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+            <img src="assets/images/canal48_logo.png" alt="Canal 48" style="height:60px;width:auto;object-fit:contain;margin:0 auto var(--space-md);">
             <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;">Televisión</span>
             <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Canal 48</h2>
             <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin:16px auto 0;border-radius:2px;"></div>

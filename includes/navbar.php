@@ -9,7 +9,7 @@ $currentPage = $page ?? 'home';
 <nav class="navbar">
     <div class="container navbar__inner">
         <a href="index.php" class="navbar__logo">
-            <img src="assets/images/favicon.png" alt="TV Universo" style="height:36px;width:36px;border-radius:8px;object-fit:cover;"> TV Universo
+            <img src="assets/images/hero_canal48.png" alt="TV Universo" style="height:40px;width:auto;object-fit:contain;">
         </a>
 
         <div class="navbar__menu">
