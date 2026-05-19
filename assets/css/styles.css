@@ -6,10 +6,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
-    /* Paleta de colores elegante */
+    /* Paleta basada en Canal 48 */
+    --canal48-primary: #1976d2;
+    --canal48-secondary: #1565c0;
+    --canal48-dark: #0d47a1;
+    --canal48-accent: #ffeb3b;
+    --canal48-live: #f44336;
+    
+    /* Colores originales mantenidos */
     --rosa: #E84C8A;
     --amarillo: #F2B705;
-    --azul: #2A7FBF;
+    --azul: #1976d2;
     --verde: #4CAF7D;
     --cafe: #6B4226;
     --crema: #FDF6EC;
@@ -19,6 +26,7 @@
     --bg-primary: #FFFFFF;
     --bg-section: #F8F9FA;
     --bg-card: #FFFFFF;
+    --bg-hero: linear-gradient(135deg, #1a237e 0%, #283593 30%, #3949ab 60%, #5c6bc0 100%);
 
     /* Texto */
     --text-primary: #1A1A1A;
@@ -51,6 +59,7 @@
     /* Sombras */
     --shadow-card: 0 4px 20px rgba(0,0,0,0.08);
     --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
+    --shadow-canal48: 0 6px 20px rgba(25, 118, 210, 0.3);
 
     --max-width: 1280px;
 }
@@ -181,84 +190,166 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /* =============================================
-   HERO - Diseño limpio y elegante
+   HERO - Basado en colores Canal 48
    ============================================= */
-.hero {
+.hero--canal48 {
     position: relative;
-    min-height: 90vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     overflow: hidden;
     margin-top: 68px;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0f0f23 100%);
+    background: linear-gradient(135deg, #1a237e 0%, #283593 30%, #3949ab 60%, #5c6bc0 100%);
 }
 
-.hero__bg {
+.hero--canal48 .hero__bg {
     position: absolute;
     inset: 0;
     background: url('../images/hero_canal48.png') center/cover no-repeat;
-    opacity: 0.2;
+    opacity: 0.15;
+    z-index: 1;
 }
 
-.hero__overlay {
+.hero--canal48 .hero__overlay {
     position: absolute;
     inset: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(232,76,138,0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(242,183,5,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(42,127,191,0.08) 0%, transparent 50%);
-}
-
-.hero__content {
-    position: relative;
+    background: linear-gradient(135deg, 
+        rgba(26, 35, 126, 0.8) 0%, 
+        rgba(40, 53, 147, 0.7) 50%, 
+        rgba(57, 73, 171, 0.8) 100%);
     z-index: 2;
-    max-width: 700px;
 }
 
-.hero__title {
-    font-size: clamp(2.8rem, 7vw, 5.5rem);
+.hero--canal48 .hero__content {
+    position: relative;
+    z-index: 3;
+    max-width: 700px;
+    padding: var(--space-2xl) 0;
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 20px;
+    background: rgba(244, 67, 54, 0.9);
+    color: #fff;
+    border-radius: 25px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-xl);
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+}
+
+.hero__badge::before {
+    content: '•';
+    margin-right: 8px;
+    animation: pulse 1.5s infinite;
+    color: #fff;
+}
+
+.hero--canal48 .hero__title {
+    font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 900;
-    line-height: 0.95;
+    line-height: 0.9;
     margin-bottom: var(--space-lg);
     color: #FFFFFF;
     font-family: var(--font-heading);
-    text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-.hero__title span {
-    background: linear-gradient(135deg, #E84C8A 0%, #F2B705 100%);
+.hero__title-accent {
+    background: linear-gradient(135deg, #ffeb3b 0%, #ffc107 50%, #ff9800 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: block;
 }
 
-.hero__desc {
-    font-size: 1.3rem;
-    color: rgba(255,255,255,0.85);
+.hero__subtitle {
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.9);
     margin-bottom: var(--space-2xl);
     font-weight: 300;
-    font-style: italic;
-    font-family: var(--font-heading);
-    max-width: 500px;
+    line-height: 1.5;
+    max-width: 600px;
 }
 
 .hero__actions {
     display: flex;
     gap: var(--space-lg);
-    flex-wrap: wrap;
     margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
 }
 
-.color-dots {
+.btn--canal48 {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(25, 118, 210, 0.3);
+    border: none;
+}
+
+.btn--canal48:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(25, 118, 210, 0.4);
+    background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+}
+
+.btn--travel {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.btn--travel:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.5);
+    transform: translateY(-3px);
+}
+
+.hero__features {
     display: flex;
-    gap: 12px;
+    gap: var(--space-2xl);
+    flex-wrap: wrap;
 }
 
-.color-dots span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    opacity: 0.8;
+.hero__feature {
+    text-align: center;
+}
+
+.hero__feature-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #ffeb3b;
+    font-family: var(--font-heading);
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero__feature-text {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+    font-weight: 500;
 }
 
 /* =============================================
@@ -281,14 +372,15 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .btn--primary {
-    background: linear-gradient(135deg, #E84C8A 0%, #c13d73 100%);
+    background: linear-gradient(135deg, var(--canal48-primary) 0%, var(--canal48-secondary) 100%);
     color: #fff;
-    box-shadow: 0 6px 20px rgba(232,76,138,0.25);
+    box-shadow: var(--shadow-canal48);
 }
 
 .btn--primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(232,76,138,0.35);
+    box-shadow: 0 10px 30px rgba(25, 118, 210, 0.4);
+    background: linear-gradient(135deg, var(--canal48-secondary) 0%, var(--canal48-dark) 100%);
 }
 
 .btn--outline {
@@ -352,7 +444,7 @@ h1,h2,h3,h4,h5,h6 {
 
 .card__category {
     font-size: 0.75rem;
-    color: var(--rosa);
+    color: var(--canal48-primary);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -401,8 +493,8 @@ h1,h2,h3,h4,h5,h6 {
     letter-spacing: 0.5px;
 }
 
-.badge--trending { background:var(--rosa); color:#fff; }
-.badge--canal48 { background:var(--azul); color:#fff; }
+.badge--trending { background:var(--canal48-live); color:#fff; }
+.badge--canal48 { background:var(--canal48-primary); color:#fff; }
 .badge--toptravel { background:var(--cafe); color:#fff; }
 
 /* =============================================
@@ -500,9 +592,11 @@ h1,h2,h3,h4,h5,h6 {
     .navbar__menu.active { display:flex; }
     .navbar__toggle { display:block; }
     
-    .hero { min-height:80vh; }
-    .hero__title { font-size:3rem; }
+    .hero--canal48 { min-height:80vh; }
+    .hero--canal48 .hero__title { font-size:2.5rem; }
+    .hero__subtitle { font-size:1.1rem; }
     .hero__actions { flex-direction:column; align-items:flex-start; }
+    .hero__features { justify-content:center; gap:var(--space-lg); }
     
     .cards-grid { grid-template-columns:1fr; }
     .footer__grid { grid-template-columns:1fr; }
@@ -510,7 +604,9 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 @media (max-width: 480px) {
-    .hero { min-height:70vh; }
-    .hero__desc { font-size:1.2rem; }
-    .btn { width:100%; justify-content:center; }
+    .hero--canal48 { min-height:70vh; }
+    .hero--canal48 .hero__title { font-size:2rem; }
+    .hero__subtitle { font-size:1rem; }
+    .btn--canal48, .btn--travel { width:100%; justify-content:center; }
+    .hero__features { flex-direction:column; align-items:center; }
 }
