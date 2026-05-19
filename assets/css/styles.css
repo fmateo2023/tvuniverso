@@ -70,10 +70,12 @@ html { scroll-behavior:smooth; }
 
 body {
     font-family: var(--font-body);
-    background: var(--bg-primary);
+    background: #1565c0;
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
 }
 
 a { color:inherit; text-decoration:none; transition:var(--transition); }
@@ -99,7 +101,12 @@ h1,h2,h3,h4,h5,h6 {
 
 /* Utilidades */
 .container { width:100%; max-width:var(--max-width); margin:0 auto; padding:0 var(--space-lg); }
-.section { padding:var(--space-3xl) 0; }
+.section {
+    padding: var(--space-3xl) 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 10;
+}
 .section--dark { background:var(--bg-section); }
 
 /* Gradient bar */
@@ -195,11 +202,14 @@ h1,h2,h3,h4,h5,h6 {
 .hero--canal48 {
     position: relative;
     min-height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     margin-top: 68px;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
     background: linear-gradient(to left, #1565c0 0%, #0d47a1 100%);
 }
 
@@ -209,14 +219,14 @@ h1,h2,h3,h4,h5,h6 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3;
+    opacity: 0.4;
     z-index: 1;
 }
 
 .hero--canal48 .hero__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to left, rgba(21, 101, 192, 0.7) 0%, rgba(13, 71, 161, 0.8) 100%);
+    background: linear-gradient(to left, rgba(21, 101, 192, 0.6) 0%, rgba(13, 71, 161, 0.7) 100%);
     z-index: 2;
 }
 
@@ -224,56 +234,107 @@ h1,h2,h3,h4,h5,h6 {
     position: relative;
     z-index: 3;
     text-align: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--space-xl);
 }
 
 .hero__actions {
     display: flex;
     gap: var(--space-xl);
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
+    margin: 0 auto;
 }
 
 .btn--canal48 {
-    background: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     color: #1565c0;
-    padding: 18px 40px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 1.1rem;
+    padding: 22px 50px;
+    border-radius: 60px;
+    font-weight: 800;
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-    border: none;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.15),
+        0 4px 15px rgba(21, 101, 192, 0.2);
+    border: 3px solid transparent;
     backdrop-filter: blur(10px);
+    min-width: 220px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn--canal48::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s;
+}
+
+.btn--canal48:hover::before {
+    left: 100%;
 }
 
 .btn--canal48:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-    background: rgba(255, 255, 255, 1);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.25),
+        0 8px 25px rgba(21, 101, 192, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
     color: #0d47a1;
+    border-color: rgba(21, 101, 192, 0.2);
 }
 
 .btn--travel {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    padding: 16px 38px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    padding: 19px 47px;
+    border-radius: 60px;
+    font-weight: 800;
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    backdrop-filter: blur(20px);
+    min-width: 220px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.btn--travel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn--travel:hover::before {
+    left: 100%;
 }
 
 .btn--travel:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.6);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.8);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
 }
 
 /* =============================================
@@ -516,15 +577,23 @@ h1,h2,h3,h4,h5,h6 {
     .navbar__menu.active { display:flex; }
     .navbar__toggle { display:block; }
     
-    .hero--canal48 { min-height:80vh; }
+    .hero--canal48 { 
+        min-height: 80vh;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
     .hero__actions { 
         flex-direction: column; 
         align-items: center;
-        gap: var(--space-lg);
+        gap: var(--space-xl);
     }
     .btn--canal48, .btn--travel {
-        width: 280px;
+        width: 300px;
+        max-width: 90vw;
         justify-content: center;
+        font-size: 1.1rem;
+        padding: 20px 40px;
     }
     
     .cards-grid { grid-template-columns:1fr; }
@@ -533,14 +602,17 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 @media (max-width: 480px) {
-    .hero--canal48 { min-height:70vh; }
+    .hero--canal48 { 
+        min-height: 70vh;
+    }
     .btn--canal48, .btn--travel { 
-        width: 100%; 
-        max-width: 300px;
-        padding: 16px 30px;
+        width: 280px;
+        max-width: 85vw;
+        padding: 18px 35px;
         font-size: 1rem;
+        letter-spacing: 1.5px;
     }
     .hero__actions {
-        gap: var(--space-md);
+        gap: var(--space-lg);
     }
 }
