@@ -14,40 +14,17 @@ $featuredVideos = getVideos(['featured' => true], 4);
 
 <!-- HERO -->
 <section class="hero hero--canal48">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" style="background-image: url('<?= sanitize($heroImage) ?>')"></div>
     <div class="hero__overlay"></div>
     <div class="container">
         <div class="hero__content">
-            <div class="hero__badge fade-up">
-                <span>EN VIVO</span>
-            </div>
-            <h1 class="hero__title fade-up stagger-1">
-                TV <span class="hero__title-accent">Universo</span>
-            </h1>
-            <p class="hero__subtitle fade-up stagger-2">
-                Tu conexión directa con las noticias, entretenimiento y los mejores destinos turísticos
-            </p>
-            <div class="hero__actions fade-up stagger-3">
+            <div class="hero__actions fade-up">
                 <a href="index.php?page=canal48" class="btn btn--canal48">
                     Canal 48
                 </a>
                 <a href="index.php?page=toptravel" class="btn btn--travel">
                     Top Travel
                 </a>
-            </div>
-            <div class="hero__features fade-up stagger-4">
-                <div class="hero__feature">
-                    <span class="hero__feature-number">24/7</span>
-                    <span class="hero__feature-text">Transmisión en vivo</span>
-                </div>
-                <div class="hero__feature">
-                    <span class="hero__feature-number">100+</span>
-                    <span class="hero__feature-text">Destinos únicos</span>
-                </div>
-                <div class="hero__feature">
-                    <span class="hero__feature-number">1M+</span>
-                    <span class="hero__feature-text">Usuarios conectados</span>
-                </div>
             </div>
         </div>
     </div>
