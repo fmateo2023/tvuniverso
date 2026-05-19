@@ -13,124 +13,56 @@ $featuredVideos = getVideos(['featured' => true], 4);
 ?>
 
 <!-- HERO -->
-<section class="hero hero--new">
-    <div class="hero__bg-new"></div>
-    <div class="hero__overlay-new"></div>
-    <div class="container">
-        <div class="hero__grid">
-            <div class="hero__content-new">
-                <div class="hero__badge fade-up">
-                    <span class="hero__badge-icon">📺</span>
-                    <span>EN VIVO · NOTICIAS · ENTRETENIMIENTO</span>
-                </div>
-                <h1 class="hero__title-new fade-up stagger-1">
-                    <span class="hero__title-main">TV</span>
-                    <span class="hero__title-accent">Universo</span>
-                </h1>
-                <p class="hero__subtitle fade-up stagger-2">
-                    La plataforma digital que conecta
-                    <span class="hero__highlight">Canal 48</span> y 
-                    <span class="hero__highlight">Top Travel</span>
-                </p>
-                <div class="hero__features fade-up stagger-3">
-                    <div class="hero__feature">
-                        <div class="hero__feature-icon" style="background: linear-gradient(135deg, #FF6B6B, #FF8E8E);">📺</div>
-                        <span>Noticias en Vivo</span>
-                    </div>
-                    <div class="hero__feature">
-                        <div class="hero__feature-icon" style="background: linear-gradient(135deg, #4ECDC4, #44A08D);">✈️</div>
-                        <span>Turismo Premium</span>
-                    </div>
-                    <div class="hero__feature">
-                        <div class="hero__feature-icon" style="background: linear-gradient(135deg, #FFD93D, #FF6B6B);">🎬</div>
-                        <span>Entretenimiento</span>
-                    </div>
-                </div>
-                <div class="hero__actions-new fade-up stagger-4">
-                    <a href="index.php?page=canal48" class="btn btn--hero-primary">
-                        <span class="btn__icon">📺</span>
-                        <span>Canal 48</span>
-                        <span class="btn__arrow">→</span>
-                    </a>
-                    <a href="index.php?page=toptravel" class="btn btn--hero-secondary">
-                        <span class="btn__icon">✈️</span>
-                        <span>Top Travel</span>
-                        <span class="btn__arrow">→</span>
-                    </a>
-                </div>
-                <div class="hero__stats fade-up stagger-5">
-                    <div class="hero__stat">
-                        <div class="hero__stat-number">24/7</div>
-                        <div class="hero__stat-label">En Vivo</div>
-                    </div>
-                    <div class="hero__stat">
-                        <div class="hero__stat-number">100+</div>
-                        <div class="hero__stat-label">Destinos</div>
-                    </div>
-                    <div class="hero__stat">
-                        <div class="hero__stat-number">1M+</div>
-                        <div class="hero__stat-label">Usuarios</div>
-                    </div>
-                </div>
-            </div>
-            <div class="hero__visual fade-up stagger-2">
-                <div class="hero__image-container">
-                    <div class="hero__image-bg"></div>
-                    <div class="hero__floating-elements">
-                        <div class="hero__floating-card hero__floating-card--1">
-                            <div class="hero__card-icon">📺</div>
-                            <div class="hero__card-text">Canal 48</div>
-                        </div>
-                        <div class="hero__floating-card hero__floating-card--2">
-                            <div class="hero__card-icon">✈️</div>
-                            <div class="hero__card-text">Top Travel</div>
-                        </div>
-                        <div class="hero__floating-card hero__floating-card--3">
-                            <div class="hero__card-icon">🔴</div>
-                            <div class="hero__card-text">EN VIVO</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="hero">
+    <div class="hero__bg" style="background-image: url('assets/images/hero_canal48.png')"></div>
+    <div class="hero__overlay"></div>
+    <div class="container hero__content">
+        <div class="fade-up" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <div style="width:40px;height:2px;background:var(--rosa)"></div>
+            <span style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#FFFFFF;font-weight:500;">Noticias · Entretenimiento · Viajes</span>
+            <div style="width:40px;height:2px;background:var(--rosa)"></div>
         </div>
-    </div>
-    <div class="hero__decoration">
-        <div class="hero__decoration-circle hero__decoration-circle--1"></div>
-        <div class="hero__decoration-circle hero__decoration-circle--2"></div>
-        <div class="hero__decoration-circle hero__decoration-circle--3"></div>
+        <h1 class="hero__title fade-up stagger-1">
+            TV <span>Universo</span>
+        </h1>
+        <p class="hero__desc fade-up stagger-2" style="color:#FFFFFF;">Conectados Contigo</p>
+        <div class="hero__actions fade-up stagger-3">
+            <a href="index.php?page=canal48" class="btn btn--primary">Canal 48</a>
+            <a href="index.php?page=toptravel" class="btn btn--outline">Top Travel</a>
+        </div>
+        <div class="color-dots fade-up stagger-4">
+            <span style="background:var(--rosa)"></span>
+            <span style="background:var(--amarillo)"></span>
+            <span style="background:var(--azul)"></span>
+            <span style="background:var(--verde)"></span>
+            <span style="background:var(--cafe)"></span>
+        </div>
     </div>
 </section>
 
 <!-- TENDENCIA -->
 <?php if (!empty($trendingPosts)): ?>
-<section class="section section--modern">
+<section class="section">
     <div class="container">
-        <div class="section-header">
-            <div class="section-header__badge">
-                <span class="section-header__icon">🔥</span>
-                <span>Lo más popular</span>
-            </div>
-            <h2 class="section-header__title">
-                En <span class="gradient-text">Tendencia</span>
-            </h2>
-            <p class="section-header__desc">Las noticias y contenido más relevante del momento</p>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <span style="color:var(--rosa);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Lo último</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">En Tendencia</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--rosa),var(--amarillo));margin:16px auto 0;border-radius:2px;"></div>
         </div>
-        <div class="cards-grid cards-grid--modern">
+        <div class="cards-grid">
             <?php foreach ($trendingPosts as $post): ?>
-            <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card card--modern">
+            <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card">
                 <div class="card__image">
                     <img src="<?= sanitize($post['image_url'] ?? '') ?>" alt="<?= sanitize($post['title']) ?>" loading="lazy">
-                    <div class="card__overlay">
-                        <span class="card__badge card__badge--trending">🔥 Tendencia</span>
-                    </div>
+                    <span class="badge badge--trending">Tendencia</span>
                 </div>
                 <div class="card__body">
                     <span class="card__category"><?= sanitize($post['category_name'] ?? '') ?></span>
                     <h3 class="card__title"><?= sanitize($post['title']) ?></h3>
                     <p class="card__excerpt"><?= sanitize($post['excerpt'] ?? '') ?></p>
                     <div class="card__meta">
-                        <span class="card__date"><?= formatDate($post['created_at']) ?></span>
-                        <span class="card__type"><?= $post['type'] === 'canal48' ? '📺 Canal 48' : '✈️ Top Travel' ?></span>
+                        <span><?= formatDate($post['created_at']) ?></span>
+                        <span><?= $post['type'] === 'canal48' ? 'Canal 48' : 'Top Travel' ?></span>
                     </div>
                 </div>
             </a>
@@ -172,55 +104,34 @@ $featuredVideos = getVideos(['featured' => true], 4);
 
 <!-- SECCIÓN CANAL 48 -->
 <?php if (!empty($canal48Posts)): ?>
-<section class="section section--canal48">
+<section class="section">
     <div class="container">
-        <div class="section-header">
-            <div class="section-header__badge section-header__badge--canal48">
-                <span class="section-header__icon">📺</span>
-                <span>Televisión en Vivo</span>
-            </div>
-            <h2 class="section-header__title">
-                <span class="gradient-text-canal48">Canal 48</span>
-            </h2>
-            <p class="section-header__desc">Noticias, entretenimiento y programación en vivo las 24 horas</p>
+        <div style="text-align:center;margin-bottom:var(--space-2xl);">
+            <img src="assets/images/canal48.jpg" alt="Canal 48" style="width:80px;height:80px;border-radius:var(--radius-lg);object-fit:cover;margin:0 auto var(--space-md);box-shadow:var(--shadow-card);">
+            <span style="color:var(--azul);font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;">Televisión</span>
+            <h2 style="font-family:var(--font-heading);font-size:2.5rem;font-weight:900;margin-top:8px;">Canal 48</h2>
+            <div style="width:60px;height:3px;background:linear-gradient(90deg,var(--azul),var(--rosa));margin:16px auto 0;border-radius:2px;"></div>
         </div>
-        <div class="canal48-showcase">
-            <div class="canal48-featured">
-                <div class="canal48-live-card">
-                    <div class="canal48-live-indicator">
-                        <span class="live-dot"></span>
-                        <span>EN VIVO</span>
+        <div class="cards-grid">
+            <?php foreach ($canal48Posts as $post): ?>
+            <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card">
+                <div class="card__image">
+                    <img src="<?= sanitize($post['image_url'] ?? '') ?>" alt="<?= sanitize($post['title']) ?>" loading="lazy">
+                    <span class="badge badge--canal48">Canal 48</span>
+                </div>
+                <div class="card__body">
+                    <span class="card__category"><?= sanitize($post['category_name'] ?? '') ?></span>
+                    <h3 class="card__title"><?= sanitize($post['title']) ?></h3>
+                    <p class="card__excerpt"><?= sanitize($post['excerpt'] ?? '') ?></p>
+                    <div class="card__meta">
+                        <span><?= formatDate($post['created_at']) ?></span>
                     </div>
-                    <h3>Transmisión en Directo</h3>
-                    <p>Mantente informado con nuestras noticias en tiempo real</p>
-                    <a href="index.php?page=canal48" class="btn btn--canal48">
-                        <span>📺</span>
-                        <span>Ver Canal 48</span>
-                    </a>
                 </div>
-            </div>
-            <div class="canal48-posts">
-                <div class="cards-grid cards-grid--canal48">
-                    <?php foreach ($canal48Posts as $post): ?>
-                    <a href="index.php?page=post&id=<?= $post['id'] ?>" class="card card--canal48">
-                        <div class="card__image">
-                            <img src="<?= sanitize($post['image_url'] ?? '') ?>" alt="<?= sanitize($post['title']) ?>" loading="lazy">
-                            <div class="card__overlay">
-                                <span class="card__badge card__badge--canal48">📺 Canal 48</span>
-                            </div>
-                        </div>
-                        <div class="card__body">
-                            <span class="card__category"><?= sanitize($post['category_name'] ?? '') ?></span>
-                            <h3 class="card__title"><?= sanitize($post['title']) ?></h3>
-                            <p class="card__excerpt"><?= sanitize($post['excerpt'] ?? '') ?></p>
-                            <div class="card__meta">
-                                <span class="card__date"><?= formatDate($post['created_at']) ?></span>
-                            </div>
-                        </div>
-                    </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+        <div style="text-align:center;margin-top:var(--space-xl);">
+            <a href="index.php?page=canal48" class="btn btn--primary btn--small">Ver todo Canal 48</a>
         </div>
     </div>
 </section>
