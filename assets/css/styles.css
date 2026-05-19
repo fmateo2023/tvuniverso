@@ -210,7 +210,7 @@ h1,h2,h3,h4,h5,h6 {
 .hero--canal48 .hero__bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 2;
@@ -518,9 +518,10 @@ h1,h2,h3,h4,h5,h6 {
 @media (min-width: 1025px) {
     .hero--canal48 {
         background: linear-gradient(to left, #1565c0 0%, #0d47a1 100%);
+        min-height: 100vh;
     }
     .hero--canal48 .hero__bg {
-        background-size: cover;
+        background-size: contain;
         background-position: center center;
     }
 }
@@ -532,7 +533,7 @@ h1,h2,h3,h4,h5,h6 {
         min-height: 90vh;
     }
     .hero--canal48 .hero__bg {
-        background-size: cover;
+        background-size: contain;
         background-position: center center;
     }
 }
@@ -553,11 +554,11 @@ h1,h2,h3,h4,h5,h6 {
     .navbar__toggle { display:block; }
     
     .hero--canal48 { 
-        min-height: 80vh;
+        min-height: 100vh;
         background: none;
     }
     .hero--canal48 .hero__bg {
-        background-size: cover;
+        background-size: contain;
         background-position: center center;
     }
     .hero__actions { 
@@ -577,11 +578,11 @@ h1,h2,h3,h4,h5,h6 {
 
 @media (max-width: 480px) {
     .hero--canal48 { 
-        min-height: 70vh;
+        min-height: 100vh;
         background: none;
     }
     .hero--canal48 .hero__bg {
-        background-size: cover;
+        background-size: contain;
         background-position: center center;
     }
     .hero--canal48 .hero__content {
