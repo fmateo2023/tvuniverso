@@ -194,7 +194,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /* =============================================
-   HERO - Simplificado con gradiente fijo
+   HERO - Imagen sobre fondo azul
    ============================================= */
 .hero--canal48 {
     position: relative;
@@ -210,23 +210,19 @@ h1,h2,h3,h4,h5,h6 {
 .hero--canal48 .hero__bg {
     position: absolute;
     inset: 0;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.7;
-    z-index: 1;
+    z-index: 2;
 }
 
 .hero--canal48 .hero__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to left, rgba(21, 101, 192, 0.4) 0%, rgba(13, 71, 161, 0.5) 100%);
-    z-index: 2;
+    display: none;
 }
 
 .hero--canal48 .hero__content {
     position: relative;
-    z-index: 3;
+    z-index: 10;
     text-align: center;
     width: 100%;
     max-width: 600px;
@@ -252,7 +248,7 @@ h1,h2,h3,h4,h5,h6 {
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border: none;
     min-width: 160px;
     text-align: center;
@@ -262,15 +258,15 @@ h1,h2,h3,h4,h5,h6 {
 
 .btn--canal48:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     background: #f8f9fa;
     color: #0d47a1;
 }
 
 .btn--travel {
-    background: transparent;
-    color: #ffffff;
-    border: 2px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
+    color: #1565c0;
+    border: 2px solid #ffffff;
     padding: 14px 30px;
     border-radius: 8px;
     font-weight: 700;
@@ -282,13 +278,15 @@ h1,h2,h3,h4,h5,h6 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn--travel:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: #ffffff;
     border-color: #ffffff;
     transform: translateY(-2px);
-    color: #ffffff;
+    color: #0d47a1;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* =============================================
@@ -517,17 +515,24 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /* Estilos para pantallas grandes */
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
+    .hero--canal48 {
+        background: linear-gradient(to left, #1565c0 0%, #0d47a1 100%);
+    }
     .hero--canal48 .hero__bg {
         background-size: cover;
         background-position: center center;
     }
 }
 
-/* Estilos para pantallas medianas */
-@media (min-width: 769px) and (max-width: 1199px) {
+/* Estilos para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero--canal48 {
+        background: linear-gradient(to left, #1565c0 0%, #0d47a1 100%);
+        min-height: 90vh;
+    }
     .hero--canal48 .hero__bg {
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
     }
 }
@@ -549,9 +554,10 @@ h1,h2,h3,h4,h5,h6 {
     
     .hero--canal48 { 
         min-height: 80vh;
+        background: none;
     }
     .hero--canal48 .hero__bg {
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
     }
     .hero__actions { 
@@ -572,11 +578,14 @@ h1,h2,h3,h4,h5,h6 {
 @media (max-width: 480px) {
     .hero--canal48 { 
         min-height: 70vh;
+        background: none;
     }
     .hero--canal48 .hero__bg {
-        background-size: contain;
+        background-size: cover;
         background-position: center center;
-        opacity: 0.5;
+    }
+    .hero--canal48 .hero__content {
+        padding: var(--space-md);
     }
     .btn--canal48, .btn--travel { 
         width: 180px;
