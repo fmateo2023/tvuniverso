@@ -140,7 +140,7 @@ INSERT INTO settings (setting_key, setting_value) VALUES
 ('twitter', 'https://twitter.com/tvuniverso'),
 ('youtube', 'https://youtube.com/tvuniverso'),
 ('contact_email', 'contacto@tvuniverso.com'),
-('contact_phone', '+52 999 123 4567'),
+('contact_phone', '9381430962'),
 ('contact_address', 'Mérida, Yucatán, México'),
 ('hero_title', 'TV Universo'),
 ('hero_subtitle', 'Tu ventana al mundo'),
